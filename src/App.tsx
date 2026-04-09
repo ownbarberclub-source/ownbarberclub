@@ -4,8 +4,8 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck } from "lucide-react";
-import { useState } from "react";
+import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useRef } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import clube from "./assets/clube.JPG";
@@ -40,6 +40,15 @@ import galeria8 from "./assets/galeria-08.jpg";
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isIgOpen, setIsIgOpen] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
+      scrollContainerRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
+  };
 
   const fadeIn = {
     initial: { opacity: 0, y: 30 },
@@ -233,38 +242,115 @@ export default function App() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "CABELO", price: "117", features: ["Cortes ilimitados", "Lavagem inclusa", "Finalização premium"] },
-              { name: "BARBA", price: "137", features: ["Barba ilimitada", "Toalha quente", "Óleos e bálsamos"] },
-              { name: "CABELO + BARBA", price: "197", features: ["Corte + Barba ilimitados", "Combo completo", "Prioridade no clube"], highlight: true },
-            ].map((plan, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -10 }}
-                className={`p-10 border-4 border-black flex flex-col justify-between ${plan.highlight ? 'bg-black text-white' : 'bg-white text-black'}`}
-              >
-                <div>
-                  <h3 className="text-4xl mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline gap-1 mb-8">
-                    <span className="text-sm font-bold">R$</span>
-                    <span className="text-7xl font-display">{plan.price}</span>
-                    <span className="text-sm font-bold uppercase">/mês</span>
+          <div className="relative group">
+            {/* Navigation Arrows */}
+            <button 
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 w-12 h-12 bg-black text-brand rounded-full flex items-center justify-center border-2 border-brand shadow-xl opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex hover:bg-brand hover:text-black"
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 w-12 h-12 bg-black text-brand rounded-full flex items-center justify-center border-2 border-brand shadow-xl opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex hover:bg-brand hover:text-black"
+            >
+              <ChevronRight size={32} />
+            </button>
+
+            <div 
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 -mx-6 px-6 hide-scrollbar md:-mx-12 md:px-12 scroll-smooth"
+            >
+              {[
+                { 
+                  name: "Essencial Corte", 
+                  price: "117", 
+                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  tag: "TODOS OS DIAS",
+                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/d4vtuaa4" 
+                },
+                { 
+                  name: "Essencial Barba", 
+                  price: "137", 
+                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  tag: "TODOS OS DIAS",
+                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/orfipymn" 
+                },
+                { 
+                  name: "Essencial Combo", 
+                  price: "197", 
+                  desc: "O máximo de liberdade e praticidade.",
+                  tag: "TODOS OS DIAS",
+                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/9kea4zr0",
+                  highlight: true 
+                },
+                { 
+                  name: "Start Corte", 
+                  price: "87", 
+                  desc: "Perfeito pra manter o cabelo sempre alinhado.",
+                  tag: "SEG A QUA",
+                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/6m5vqc8k" 
+                },
+                { 
+                  name: "Start Barba", 
+                  price: "117", 
+                  desc: "Barba sempre desenhada e na régua.",
+                  tag: "SEG A QUA",
+                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/nhq05bpo" 
+                },
+                { 
+                  name: "Start Combo", 
+                  price: "167", 
+                  desc: "O combo completo, sempre em dia.",
+                  tag: "SEG A QUA",
+                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/ino9jcsg",
+                  highlight: true
+                },
+              ].map((plan, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -5 }}
+                  className={`flex-none w-[320px] md:w-[400px] snap-center p-10 border-4 border-black flex flex-col justify-between ${plan.highlight ? 'bg-black text-white' : 'bg-white text-black shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]'}`}
+                >
+                  <div>
+                    <div className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 inline-block px-2 py-1 ${plan.highlight ? 'bg-brand text-black' : 'bg-black text-white'}`}>
+                      {plan.tag}
+                    </div>
+                    <h3 className="text-4xl mb-2 leading-none">{plan.name}</h3>
+                    <p className={`mb-6 text-sm opacity-80 ${plan.highlight ? 'text-white/70' : 'text-black/70'}`}>
+                      {plan.desc}
+                    </p>
+                    <div className="flex items-baseline gap-1 mb-8">
+                      <span className="text-sm font-bold">R$</span>
+                      <span className="text-7xl font-display">{plan.price}</span>
+                      <span className="text-sm font-bold uppercase">/mês</span>
+                    </div>
+                    <ul className="space-y-3 mb-10 text-sm">
+                      {plan.features.map((f, i) => (
+                        <li key={i} className="flex items-start gap-3 font-medium">
+                          <Check size={18} className={`shrink-0 mt-0.5 ${plan.highlight ? 'text-brand' : 'text-black'}`} />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-4 mb-10">
-                    {plan.features.map((f, i) => (
-                      <li key={i} className="flex items-center gap-3 font-medium">
-                        <Check size={20} className={plan.highlight ? 'text-brand' : 'text-black'} />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={`py-4 text-center font-bold uppercase tracking-widest border-2 ${plan.highlight ? 'border-brand text-brand' : 'border-black text-black'}`}>
-                  Corte Ilimitado
-                </div>
-              </motion.div>
-            ))}
+                  <a
+                    href={plan.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block py-4 text-center font-bold uppercase tracking-widest border-2 transition-all hover:scale-105 active:scale-95 ${plan.highlight ? 'bg-brand text-black border-brand' : 'bg-black text-white border-black'}`}
+                  >
+                    EXPERIÊNCIA DE CAMPEÃO
+                  </a>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
