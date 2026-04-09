@@ -599,38 +599,40 @@ export default function App() {
                   name: "Centro", 
                   addr: "Av. Fernando Machado, 1470D", 
                   ig: "@ownbarberclub_",
-                  map: "https://www.google.com/maps/search/?api=1&query=Own+Barber+Club+Centro+Chapecó"
+                  map: "https://maps.app.goo.gl/DChXP4NxeVaPL7Te7"
                 },
                 { 
                   name: "Avenida", 
                   addr: "Av. Getúlio Vargas, 267S", 
                   ig: "@ownbarberclub.av",
-                  map: "https://www.google.com/maps/search/?api=1&query=Own+Barber+Club+Avenida+Chapecó"
+                  map: "https://maps.app.goo.gl/2mchh7m9XaJPagfc6"
                 },
                 { 
                   name: "Efapi", 
                   addr: "R. Maravilha, 50 - Sala 4", 
                   ig: "@ownbarberclub_efapi",
-                  map: "https://www.google.com/maps/search/?api=1&query=Own+Barber+Club+Efapi+Chapecó"
+                  map: "https://maps.app.goo.gl/SRiJ51zfiJUnY7W59"
                 },
               ].map((unit, idx) => (
                 <div key={idx} className="border-b-4 border-black pb-8">
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                    <div>
-                      <h4 className="text-4xl font-display mb-2">{unit.name}</h4>
-                      <p className="text-xl font-medium">{unit.addr}</p>
-                      <p className="text-sm uppercase tracking-widest mt-2 mb-6">Chapecó - SC</p>
+                    <div className="flex-1">
+                      <h4 className="text-4xl font-display mb-2 uppercase italic tracking-tighter">{unit.name}</h4>
+                      <p className="text-xl font-medium mb-1">{unit.addr}</p>
+                      <p className="text-sm uppercase tracking-[0.3em] opacity-60 mb-6">Chapecó - SC</p>
+                      
                       <a 
                         href={unit.map}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black border-2 border-black transition-all"
+                        className="group inline-flex items-center gap-3 bg-black text-white px-8 py-3 font-display text-xl uppercase italic tracking-tighter border-2 border-black hover:bg-white hover:text-black transition-all relative overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
                       >
-                        <MapPin size={14} />
+                        <MapPin size={20} className="group-hover:animate-bounce" />
                         Como Chegar
+                        <ChevronRight size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
                       </a>
                     </div>
-                    <div className="flex items-center gap-2 font-mono font-bold text-sm shrink-0">
+                    <div className="flex items-center gap-2 font-mono font-bold text-sm shrink-0 bg-black text-white px-3 py-1 mt-2">
                       <Instagram size={16} />
                       {unit.ig}
                     </div>
