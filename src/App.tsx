@@ -312,18 +312,72 @@ export default function App() {
                   link: "https://l.appbarber.com.br/ino9jcsg",
                   highlight: true
                 },
+                { 
+                  name: "Chape Corte", 
+                  price: "77", 
+                  desc: "Sócio Chape tem vantagem exclusiva.",
+                  tag: "SÓCIO CHAPE",
+                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"], 
+                  link: "https://l.appbarber.com.br/afd1u8yc",
+                  chape: true
+                },
+                { 
+                  name: "Chape Barba", 
+                  price: "107", 
+                  desc: "Sócio Chape tem vantagem exclusiva.",
+                  tag: "SÓCIO CHAPE",
+                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"], 
+                  link: "https://l.appbarber.com.br/s1su0uyi",
+                  chape: true
+                },
+                { 
+                  name: "Chape Combo", 
+                  price: "157", 
+                  desc: "Sócio Chape tem vantagem exclusiva.",
+                  tag: "SÓCIO CHAPE",
+                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"], 
+                  link: "https://l.appbarber.com.br/a710n5kg",
+                  chape: true,
+                  highlight: true
+                },
               ].map((plan, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ y: -5 }}
-                  className={`flex-none w-[320px] md:w-[400px] snap-center p-10 border-4 border-black flex flex-col justify-between ${plan.highlight ? 'bg-black text-white' : 'bg-white text-black shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]'}`}
+                  className={`flex-none w-[320px] md:w-[400px] snap-center p-10 border-4 border-black flex flex-col justify-between relative overflow-hidden ${
+                    plan.chape 
+                      ? 'bg-chape text-white shadow-[20px_20px_0px_0px_rgba(0,100,55,0.2)]' 
+                      : plan.highlight 
+                        ? 'bg-black text-white' 
+                        : 'bg-white text-black shadow-[20px_20px_0px_0px_rgba(0,0,0,0.1)]'
+                  }`}
                 >
-                  <div>
-                    <div className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 inline-block px-2 py-1 ${plan.highlight ? 'bg-brand text-black' : 'bg-black text-white'}`}>
-                      {plan.tag}
+                  {plan.chape && (
+                    <div className="absolute -top-4 -right-4 opacity-10 rotate-12">
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg/500px-Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg.png" 
+                        alt="Chape Crest" 
+                        className="w-40 h-40 object-contain"
+                      />
+                    </div>
+                  )}
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className={`text-xs font-mono font-bold tracking-widest uppercase inline-block px-2 py-1 ${
+                        plan.chape ? 'bg-white text-chape' : plan.highlight ? 'bg-brand text-black' : 'bg-black text-white'
+                      }`}>
+                        {plan.tag}
+                      </div>
+                      {plan.chape && (
+                        <img 
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg/500px-Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg.png" 
+                          alt="Chape" 
+                          className="w-10 h-10 object-contain"
+                        />
+                      )}
                     </div>
                     <h3 className="text-4xl mb-2 leading-none">{plan.name}</h3>
-                    <p className={`mb-6 text-sm opacity-80 ${plan.highlight ? 'text-white/70' : 'text-black/70'}`}>
+                    <p className={`mb-6 text-sm opacity-80 ${plan.chape || plan.highlight ? 'text-white/70' : 'text-black/70'}`}>
                       {plan.desc}
                     </p>
                     <div className="flex items-baseline gap-1 mb-8">
@@ -334,7 +388,7 @@ export default function App() {
                     <ul className="space-y-3 mb-10 text-sm">
                       {plan.features.map((f, i) => (
                         <li key={i} className="flex items-start gap-3 font-medium">
-                          <Check size={18} className={`shrink-0 mt-0.5 ${plan.highlight ? 'text-brand' : 'text-black'}`} />
+                          <Check size={18} className={`shrink-0 mt-0.5 ${plan.chape ? 'text-white' : plan.highlight ? 'text-brand' : 'text-black'}`} />
                           {f}
                         </li>
                       ))}
@@ -344,7 +398,13 @@ export default function App() {
                     href={plan.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block py-4 text-center font-bold uppercase tracking-widest border-2 transition-all hover:scale-105 active:scale-95 ${plan.highlight ? 'bg-brand text-black border-brand' : 'bg-black text-white border-black'}`}
+                    className={`relative z-10 block py-4 text-center font-bold uppercase tracking-widest border-2 transition-all hover:scale-105 active:scale-95 ${
+                      plan.chape 
+                        ? 'bg-white text-chape border-white' 
+                        : plan.highlight 
+                          ? 'bg-brand text-black border-brand' 
+                          : 'bg-black text-white border-black'
+                    }`}
                   >
                     EXPERIÊNCIA DE CAMPEÃO
                   </a>
