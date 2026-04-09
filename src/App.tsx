@@ -664,7 +664,7 @@ export default function App() {
               },
               {
                 name: "Marcos Vinicius",
-                text: "A temática de F1 ficou sensacional. Sou sócio Chape e as vantagens são reais. Barbeiros de alto nível.",
+                text: "O ambiente ficou sensacional. Sou sócio Chape e as vantagens são reais. Barbeiros de alto nível.",
                 initials: "MV"
               },
               {
@@ -711,12 +711,17 @@ export default function App() {
           </div>
 
           <div className="mt-20 text-center">
-            <div className="inline-flex items-center gap-4 bg-black text-white px-8 py-4 border-4 border-black font-display text-2xl uppercase italic tracking-tighter hover:bg-brand transition-colors cursor-pointer">
+            <a 
+              href="https://www.google.com/search?q=OWN+BARBER+CLUB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 bg-black text-white px-8 py-4 border-4 border-black font-display text-2xl uppercase italic tracking-tighter hover:bg-brand transition-colors cursor-pointer"
+            >
               <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
                 <span className="text-black font-black text-xs not-italic">G</span>
               </span>
               Ver todas as avaliações no Google
-            </div>
+            </a>
           </div>
         </div>
       </section>
