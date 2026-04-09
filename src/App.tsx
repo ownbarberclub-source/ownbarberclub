@@ -595,18 +595,42 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-20">
             <div className="space-y-12">
               {[
-                { name: "Centro", addr: "Av. Fernando Machado, 1470D", ig: "@ownbarberclub_" },
-                { name: "Avenida", addr: "Av. Getúlio Vargas, 267S", ig: "@ownbarberclub.av" },
-                { name: "Efapi", addr: "R. Maravilha, 50 - Sala 4", ig: "@ownbarberclub_efapi" },
+                { 
+                  name: "Centro", 
+                  addr: "Av. Fernando Machado, 1470D", 
+                  ig: "@ownbarberclub_",
+                  map: "https://www.google.com/maps/search/?api=1&query=Own+Barber+Club+Centro+Chapecó"
+                },
+                { 
+                  name: "Avenida", 
+                  addr: "Av. Getúlio Vargas, 267S", 
+                  ig: "@ownbarberclub.av",
+                  map: "https://www.google.com/maps/search/?api=1&query=Own+Barber+Club+Avenida+Chapecó"
+                },
+                { 
+                  name: "Efapi", 
+                  addr: "R. Maravilha, 50 - Sala 4", 
+                  ig: "@ownbarberclub_efapi",
+                  map: "https://www.google.com/maps/search/?api=1&query=Own+Barber+Club+Efapi+Chapecó"
+                },
               ].map((unit, idx) => (
                 <div key={idx} className="border-b-4 border-black pb-8">
-                  <div className="flex justify-between items-start">
+                  <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                     <div>
                       <h4 className="text-4xl font-display mb-2">{unit.name}</h4>
                       <p className="text-xl font-medium">{unit.addr}</p>
-                      <p className="text-sm uppercase tracking-widest mt-2">Chapecó - SC</p>
+                      <p className="text-sm uppercase tracking-widest mt-2 mb-6">Chapecó - SC</p>
+                      <a 
+                        href={unit.map}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black border-2 border-black transition-all"
+                      >
+                        <MapPin size={14} />
+                        Como Chegar
+                      </a>
                     </div>
-                    <div className="flex items-center gap-2 font-mono font-bold text-sm">
+                    <div className="flex items-center gap-2 font-mono font-bold text-sm shrink-0">
                       <Instagram size={16} />
                       {unit.ig}
                     </div>
@@ -641,16 +665,16 @@ export default function App() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-32 bg-white text-black overflow-hidden border-y-8 border-black">
+      <section className="py-32 bg-black text-white overflow-hidden border-y-8 border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div {...fadeIn} className="text-center mb-20">
-            <h2 className="text-6xl md:text-9xl mb-4 text-black">VOZ DOS CAMPEÕES.</h2>
+            <h2 className="text-6xl md:text-9xl mb-4 text-white">VOZ DOS CAMPEÕES.</h2>
             <div className="flex items-center justify-center gap-2 mb-2">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={24} fill="#FBBC05" color="#FBBC05" />
               ))}
             </div>
-            <p className="text-xl font-mono uppercase tracking-[0.3em] font-bold">
+            <p className="text-xl font-mono uppercase tracking-[0.3em] font-bold text-white/60">
               Avaliação 5.0 no Google
             </p>
           </motion.div>
@@ -684,7 +708,7 @@ export default function App() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 border-4 border-black bg-white flex flex-col justify-between hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-all"
+                className="p-8 border-4 border-white/10 bg-black flex flex-col justify-between hover:border-brand transition-all"
               >
                 <div>
                   <div className="flex items-center gap-1 mb-6 text-[#FBBC05]">
@@ -692,18 +716,18 @@ export default function App() {
                       <Star key={i} size={16} fill="currentColor" />
                     ))}
                   </div>
-                  <Quote size={40} className="text-black/10 absolute -mt-4 -ml-4" />
+                  <Quote size={40} className="text-white/5 absolute -mt-4 -ml-4" />
                   <p className="relative z-10 text-lg font-medium italic mb-8">
                     "{review.text}"
                   </p>
                 </div>
-                <div className="flex items-center gap-4 border-t-2 border-black/10 pt-6">
-                  <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-bold text-xl font-display italic">
+                <div className="flex items-center gap-4 border-t-2 border-white/5 pt-6">
+                  <div className="w-12 h-12 bg-white text-black flex items-center justify-center font-bold text-xl font-display italic">
                     {review.initials}
                   </div>
                   <div>
-                    <h4 className="font-bold uppercase tracking-tight leading-none text-lg">{review.name}</h4>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-black/40">Cliente Verificado</span>
+                    <h4 className="font-bold uppercase tracking-tight leading-none text-lg text-white">{review.name}</h4>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-white/40">Cliente Verificado</span>
                   </div>
                 </div>
               </motion.div>
@@ -715,10 +739,10 @@ export default function App() {
               href="https://www.google.com/search?q=OWN+BARBER+CLUB"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-4 bg-black text-white px-8 py-4 border-4 border-black font-display text-2xl uppercase italic tracking-tighter hover:bg-brand transition-colors cursor-pointer"
+              className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 border-4 border-white font-display text-2xl uppercase italic tracking-tighter hover:bg-brand hover:border-brand transition-colors cursor-pointer"
             >
-              <span className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                <span className="text-black font-black text-xs not-italic">G</span>
+              <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center">
+                <span className="text-white font-black text-xs not-italic">G</span>
               </span>
               Ver todas as avaliações no Google
             </a>
