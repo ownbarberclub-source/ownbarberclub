@@ -12,13 +12,13 @@ import clube from "./assets/clube.JPG";
 // Equipe Tattoo
 import equipeTai from "./assets/equipe-tai.jpg";
 import equipeBruna from "./assets/equipe-bruna.jpg";
-import equipeThiago from "./assets/equipe-thiago.jpg";
+import equipeThiago from "./assets/equipe-thiago.JPG";
 // Equipe Centro
-import centroJohn from "./assets/bw-centro-john.jpg";
-import centroVitinho from "./assets/bw-centro-vitinho.jpg";
-import centroDouglas from "./assets/bw-centro-douglas.JPG";
-import centroJulio from "./assets/bw-centro-julio.JPG";
-import centroThiago from "./assets/bw-centro-thiago.jpg";
+import centroJohn from "./assets/equipe-john.JPG";
+import centroVitinho from "./assets/equipe-vitor.JPG";
+import centroDouglas from "./assets/equipe-douglas.JPG";
+import centroJulio from "./assets/equipe-julio.JPG";
+import centroThiago from "./assets/equipe-thiago.JPG";
 // Equipe Avenida
 import avenidaHernaldo from "./assets/bw-avenida-hernaldo.jpg";
 import avenidaNasser from "./assets/bw-avenida-nasser.jpg";
@@ -51,10 +51,29 @@ export default function App() {
   };
 
   const fadeIn = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.5 }
+    viewport: { once: true, margin: "-50px" },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+  };
+
+  const staggerContainer = {
+    initial: {},
+    whileInView: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    },
+    viewport: { once: true }
+  };
+
+  const staggerItem = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    }
   };
 
   const services = [
@@ -129,9 +148,11 @@ export default function App() {
         <div className="absolute inset-0 z-0">
           <img
             src={fachada}
-            alt="Barbershop"
+            alt="Barbearia Own"
             className="w-full h-full object-cover opacity-50 grayscale"
             referrerPolicy="no-referrer"
+            loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         </div>
@@ -191,6 +212,8 @@ export default function App() {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg/500px-Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg.png"
                 alt="Chapecoense Logo"
                 className="w-full h-full object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="text-center md:text-left">
@@ -224,6 +247,8 @@ export default function App() {
               src={clube}
               alt="O Clube"
               className="w-full aspect-square object-cover border-4 border-white"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -423,15 +448,18 @@ export default function App() {
             <p className="text-brand font-mono text-center lg:text-left mt-4 uppercase tracking-[0.5em]">The Full Menu</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          >
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="p-8 border-2 border-white/10 hover:border-brand transition-all group relative overflow-hidden"
+                variants={staggerItem}
+                className="p-8 border-2 border-white/10 hover:border-brand transition-all group relative overflow-hidden will-change-transform"
               >
                 <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
                   <service.icon size={100} />
@@ -440,7 +468,7 @@ export default function App() {
                 <h3 className="text-2xl tracking-tight">{service.name}</h3>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -455,26 +483,33 @@ export default function App() {
                 Um espaço exclusivo dentro da nossa unidade Centro. Arte na pele com a mesma excelência e cuidado que você já conhece.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <motion.div 
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="whileInView"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-8"
+              >
                 {[
                   { name: "Tainara", role: "Body Piercer", img: equipeTai },
                   { name: "Bruna", role: "Body Piercer", img: equipeBruna },
                   { name: "Thiago", role: "Tattoo Artist", img: equipeThiago },
                 ].map((artist, idx) => (
-                  <div key={idx} className="group">
+                  <motion.div key={idx} variants={staggerItem} className="group">
                     <div className="aspect-square overflow-hidden border-2 border-white/10 group-hover:border-brand transition-colors mb-4">
                       <img
                         src={artist.img}
                         alt={artist.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                         referrerPolicy="no-referrer"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <h4 className="text-xl font-display">{artist.name}</h4>
                     <p className="text-brand font-mono text-[10px] uppercase tracking-widest">{artist.role}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -487,7 +522,12 @@ export default function App() {
             <h2 className="text-6xl md:text-8xl mb-4">GALERIA.</h2>
             <p className="text-brand font-mono uppercase tracking-widest">Nossos Trabalhos</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          >
             {[
               galeria1,
               galeria2,
@@ -500,19 +540,21 @@ export default function App() {
             ].map((img, idx) => (
               <motion.div
                 key={idx}
+                variants={staggerItem}
                 whileHover={{ scale: 1.05 }}
-                className="aspect-square overflow-hidden border-2 border-white/10"
+                className="aspect-square overflow-hidden border-2 border-white/10 will-change-transform"
               >
                 <img
                   src={img}
                   alt={`Corte ${idx + 1}`}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -559,12 +601,18 @@ export default function App() {
                   <h3 className="text-4xl md:text-6xl text-brand italic">{group.unit}</h3>
                   <div className="h-2 bg-white flex-grow" />
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <motion.div 
+                  variants={staggerContainer}
+                  initial="initial"
+                  whileInView="whileInView"
+                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+                >
                   {group.barbers.map((barber, bIdx) => (
                     <motion.div
                       key={bIdx}
+                      variants={staggerItem}
                       whileHover={{ y: -10 }}
-                      className="relative group"
+                      className="relative group will-change-transform"
                     >
                       <div className="aspect-[3/4] overflow-hidden border-4 border-white group-hover:border-brand transition-colors">
                         <img
@@ -572,6 +620,8 @@ export default function App() {
                           alt={barber.name}
                           className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                           referrerPolicy="no-referrer"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                       <div className="mt-4">
@@ -580,7 +630,7 @@ export default function App() {
                       </div>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>
