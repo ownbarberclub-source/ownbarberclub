@@ -572,7 +572,7 @@ export default function App() {
                 unit: "Box Centro",
                 barbers: [
                   { name: "John", role: "Chefe dos Box", img: centroJohn },
-                  { name: "Vitinho", role: "Pit Crew", img: centroVitinho },
+                  { name: "Vitinho", role: "Analista de Telemetria", img: centroVitinho },
                   { name: "Douglas", role: "Mecânico Geral", img: centroDouglas },
                   { name: "Julio", role: "Engenheiro de Pista", img: centroJulio },
                   { name: "Thiago", role: "Especialista em Ajustes", img: centroThiago },
@@ -582,7 +582,7 @@ export default function App() {
                 unit: "Box Avenida",
                 barbers: [
                   { name: "Hernaldo", role: "Chefe dos Box", img: avenidaHernaldo },
-                  { name: "Nasser", role: "Chefe dos Box", img: avenidaNasser },
+                  { name: "Nasser", role: "Diretor de Estratégia", img: avenidaNasser },
                 ]
               },
               {
@@ -590,9 +590,9 @@ export default function App() {
                 barbers: [
                   { name: "Eduardo", role: "Chefe dos Box", img: efipiEduardo },
                   { name: "Tiago", role: "Mecânico Geral", img: efipiTiago },
-                  { name: "Kaique", role: "Pit Crew", img: efipiKaique },
+                  { name: "Kaique", role: "Engenheiro de Performance", img: efipiKaique },
                   { name: "Carlos", role: "Especialista em Aerodinâmica", img: efipiCarlos },
-                  { name: "Cadu", role: "Pit Crew", img: efipiCadu },
+                  { name: "Cadu", role: "Técnico de Setup", img: efipiCadu },
                 ]
               }
             ].map((group, gIdx) => (
