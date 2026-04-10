@@ -5,7 +5,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import clube from "./assets/clube.JPG";
@@ -41,6 +41,40 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isIgOpen, setIsIgOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Componente de imagem que revela cor no scroll (mobile)
+  const ScrollRevealImg = useCallback(({ src, alt, className = "", ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+      const el = imgRef.current;
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.classList.add('in-view');
+          } else {
+            el.classList.remove('in-view');
+          }
+        },
+        { threshold: 0.4 }
+      );
+
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, []);
+
+    return (
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        className={`scroll-reveal-img ${className}`}
+        {...props}
+      />
+    );
+  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -496,10 +530,10 @@ export default function App() {
                 ].map((artist, idx) => (
                   <motion.div key={idx} variants={staggerItem} className="group">
                     <div className="aspect-square overflow-hidden border-2 border-white/10 group-hover:border-brand transition-colors mb-4">
-                      <img
+                      <ScrollRevealImg
                         src={artist.img}
                         alt={artist.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
                         loading="lazy"
                         decoding="async"
@@ -544,12 +578,12 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 className="aspect-square overflow-hidden border-2 border-white/10 will-change-transform"
               >
-                <img
+                <ScrollRevealImg
                   src={img}
                   alt={`Corte ${idx + 1}`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
@@ -615,10 +649,10 @@ export default function App() {
                       className="relative group will-change-transform"
                     >
                       <div className="aspect-[3/4] overflow-hidden border-4 border-white group-hover:border-brand transition-colors">
-                        <img
+                        <ScrollRevealImg
                           src={barber.img}
                           alt={barber.name}
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                          className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"
                           loading="lazy"
                           decoding="async"

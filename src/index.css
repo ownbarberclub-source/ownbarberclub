@@ -41,3 +41,26 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Mobile scroll-reveal: imagens ganham cor ao entrar na viewport */
+@media (hover: none) {
+  .scroll-reveal-img {
+    filter: grayscale(100%);
+    transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal-img.in-view {
+    filter: grayscale(0%);
+  }
+}
+
+/* Desktop: manter hover para controle de grayscale */
+@media (hover: hover) {
+  .scroll-reveal-img {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+  }
+  .scroll-reveal-img:hover,
+  .group:hover .scroll-reveal-img {
+    filter: grayscale(0%);
+  }
+}
