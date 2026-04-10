@@ -581,8 +581,8 @@ export default function App() {
               {
                 unit: "Box Avenida",
                 barbers: [
-                  { name: "Hernaldo", role: "Chefe dos Box", img: avenidaHernaldo },
-                  { name: "Nasser", role: "Diretor de Estratégia", img: avenidaNasser },
+                  { name: "Nasser", role: "Chefe dos Box", img: avenidaNasser },
+                  { name: "Hernaldo", role: "Diretor de Estratégia", img: avenidaHernaldo },
                 ]
               },
               {
