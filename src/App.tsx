@@ -12,7 +12,7 @@ import clube from "./assets/clube.JPG";
 // Equipe Tattoo
 import equipeTai from "./assets/equipe-tai.jpg";
 import equipeBruna from "./assets/equipe-bruna.jpg";
-import equipeThiago from "./assets/equipe-thiago.JPG";
+import equipeThiago from "./assets/tatuador-thiago.jpg";
 // Equipe Centro
 import centroJohn from "./assets/equipe-john.JPG";
 import centroVitinho from "./assets/equipe-vitor.JPG";
