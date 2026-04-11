@@ -5,7 +5,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
-import { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import clube from "./assets/clube.JPG";
@@ -20,14 +20,14 @@ import centroDouglas from "./assets/equipe-douglas.JPG";
 import centroJulio from "./assets/equipe-julio.JPG";
 import centroThiago from "./assets/equipe-thiago.JPG";
 // Equipe Avenida
-import avenidaHernaldo from "./assets/bw-avenida-hernaldo.jpg";
-import avenidaNasser from "./assets/bw-avenida-nasser.jpg";
+import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
+import avenidaNasser from "./assets/avenida-nasser.jpg";
 // Equipe Efapi
 import efipiEduardo from "./assets/efapi-eduardo.jpg";
-import efipiTiago from "./assets/bw-efapi-tiago.jpg";
-import efipiKaique from "./assets/bw-efapi-kaique.JPG";
-import efipiCarlos from "./assets/bw-efapi-carlos.JPG";
-import efipiCadu from "./assets/bw-efapi-cadu.JPG";
+import efipiTiago from "./assets/efapi-tiago.jpg";
+import efipiKaique from "./assets/efapi-kaique.JPG";
+import efipiCarlos from "./assets/efapi-carlos.JPG";
+import efipiCadu from "./assets/efapi-cadu.JPG";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpg";
 import galeria3 from "./assets/galeira-03.jpg";
