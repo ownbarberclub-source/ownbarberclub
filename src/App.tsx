@@ -742,7 +742,7 @@ export default function App() {
               <div className="mt-20 flex flex-col gap-4">
                 <div className="flex items-center gap-4 text-xl">
                   <Phone className="text-brand" />
-                  <span className="font-mono">(49) 98911-7337</span>
+                  <span className="font-mono">(49) 99925-0412</span>
                 </div>
               </div>
             </div>
@@ -890,7 +890,7 @@ export default function App() {
         </motion.button>
         
         <motion.a
-          href="https://wa.me/5549989117337"
+          href="https://wa.me/5549999250412"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1, rotate: -5 }}
