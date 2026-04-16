@@ -45,22 +45,28 @@
 /* Mobile scroll-reveal: imagens ganham cor ao entrar na viewport */
 @media (hover: none) {
   .scroll-reveal-img {
-    filter: grayscale(100%);
-    transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: grayscale(100%) contrast(1.1);
+    transform: scale(1.05);
+    transition: filter 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, filter;
   }
   .scroll-reveal-img.in-view {
-    filter: grayscale(0%);
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1);
   }
 }
 
 /* Desktop: manter hover para controle de grayscale */
 @media (hover: hover) {
   .scroll-reveal-img {
-    filter: grayscale(100%);
-    transition: filter 0.5s ease;
+    filter: grayscale(100%) contrast(1.1);
+    transform: scale(1);
+    transition: filter 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, filter;
   }
-  .scroll-reveal-img:hover,
+  
   .group:hover .scroll-reveal-img {
-    filter: grayscale(0%);
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.1);
   }
 }

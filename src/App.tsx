@@ -10,7 +10,6 @@ import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import clube from "./assets/clube.JPG";
 // Equipe Tattoo
-import equipeTai from "./assets/equipe-tai.jpg";
 import equipeBruna from "./assets/equipe-bruna.jpg";
 import equipeThiago from "./assets/tatuador-thiago.jpg";
 // Equipe Centro
@@ -23,9 +22,9 @@ import centroThiago from "./assets/equipe-thiago.JPG";
 import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
 import avenidaNasser from "./assets/avenida-nasser.jpg";
 // Equipe Efapi
-import efipiEduardo from "./assets/efapi-eduardo.jpg";
+import efipiEduardo from "./assets/efapi-eduardo.jpeg";
 import efipiTiago from "./assets/efapi-tiago.jpg";
-import efipiKaique from "./assets/efapi-kaique.JPG";
+import efipiKaique from "./assets/efapi-kaique.jpeg";
 import efipiCarlos from "./assets/efapi-carlos.JPG";
 import efipiCadu from "./assets/efapi-cadu.JPG";
 import galeria1 from "./assets/galeria-01.jpg";
@@ -42,9 +41,10 @@ export default function App() {
   const [isIgOpen, setIsIgOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Componente de imagem que revela cor no scroll (mobile)
+  // Componente de imagem que revela cor no scroll (mobile) e suaviza o carregamento
   const ScrollRevealImg = useCallback(({ src, alt, className = "", ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const imgRef = useRef<HTMLImageElement>(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
       const el = imgRef.current;
@@ -70,7 +70,9 @@ export default function App() {
         ref={imgRef}
         src={src}
         alt={alt}
-        className={`scroll-reveal-img ${className}`}
+        onLoad={() => setIsLoaded(true)}
+        className={`scroll-reveal-img ${className} ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{ transition: 'filter 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease-in' }}
         {...props}
       />
     );
@@ -524,7 +526,6 @@ export default function App() {
                 className="grid grid-cols-1 sm:grid-cols-3 gap-8"
               >
                 {[
-                  { name: "Tainara", role: "Body Piercer", img: equipeTai },
                   { name: "Bruna", role: "Body Piercer", img: equipeBruna },
                   { name: "Thiago", role: "Tattoo Artist", img: equipeThiago },
                 ].map((artist, idx) => (
