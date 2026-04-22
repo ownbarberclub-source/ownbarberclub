@@ -166,30 +166,46 @@ export default function App() {
         </div>
 
         {/* Mobile Nav */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="fixed inset-0 top-20 bg-black z-40 p-10 flex flex-col gap-8"
-          >
-            {["Sobre", "Clube", "Serviços", "Tattoo", "Equipe", "Unidades"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-5xl font-display uppercase tracking-tighter hover:text-brand"
-              >
-                {item}
-              </a>
-            ))}
-            <button 
-              onClick={() => { setIsBookingOpen(true); setIsMenuOpen(false); }}
-              className="mt-8 bg-brand text-black py-6 text-2xl font-display uppercase italic tracking-tighter"
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-0 top-[80px] bg-black/98 backdrop-blur-3xl z-[100] p-10 flex flex-col gap-6 overflow-y-auto"
             >
-              Agendar Agora
-            </button>
-          </motion.div>
-        )}
+              <div className="flex flex-col gap-4">
+                {["Sobre", "Clube", "Serviços", "Tattoo", "Equipe", "Unidades"].map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-4xl font-display uppercase tracking-tighter hover:text-brand border-b border-white/5 pb-4"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+              
+              <button 
+                onClick={() => { setIsBookingOpen(true); setIsMenuOpen(false); }}
+                className="mt-4 bg-brand text-black py-5 text-xl font-display uppercase italic tracking-tighter flex items-center justify-center gap-3 active:scale-95 transition-transform"
+              >
+                <Calendar size={20} />
+                Agendar Agora
+              </button>
+
+              <div className="mt-auto pt-10 flex flex-col gap-4">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/40">Siga-nos</p>
+                <div className="flex gap-6">
+                  <a href="https://www.instagram.com/ownbarberclub_/" target="_blank" className="text-white hover:text-brand"><Instagram size={24} /></a>
+                  <a href="https://wa.me/5549999250412" target="_blank" className="text-white hover:text-brand"><Phone size={24} /></a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}
