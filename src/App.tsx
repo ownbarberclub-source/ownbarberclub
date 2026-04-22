@@ -4,7 +4,7 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
