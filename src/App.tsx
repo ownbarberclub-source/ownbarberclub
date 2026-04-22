@@ -165,47 +165,48 @@ export default function App() {
           </button>
         </div>
 
-        {/* Mobile Nav */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 top-[80px] bg-[#050505] z-[999] p-10 flex flex-col gap-6"
-            >
-              <div className="flex flex-col gap-2">
-                {["Sobre", "Clube", "Serviços", "Tattoo", "Equipe", "Unidades"].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-4xl font-display uppercase tracking-tighter hover:text-brand py-3 border-b border-white/5"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-              
-              <button 
-                onClick={() => { setIsBookingOpen(true); setIsMenuOpen(false); }}
-                className="mt-4 bg-brand text-black py-5 text-xl font-display uppercase italic tracking-tighter flex items-center justify-center gap-3"
-              >
-                <Calendar size={20} />
-                Agendar Agora
-              </button>
-
-              <div className="mt-auto pb-10 flex flex-col gap-4">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white/40">Nossas Redes</p>
-                <div className="flex gap-8">
-                  <a href="https://www.instagram.com/ownbarberclub_/" target="_blank" className="text-white hover:text-brand"><Instagram size={28} /></a>
-                  <a href="https://wa.me/5549999250412" target="_blank" className="text-white hover:text-brand"><Phone size={28} /></a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* Mobile Nav */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed inset-0 top-20 bg-black z-[9999] p-10 flex flex-col gap-8 overflow-y-auto"
+          >
+            <div className="flex flex-col gap-6">
+              {["Sobre", "Clube", "Serviços", "Tattoo", "Equipe", "Unidades"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-4xl font-display uppercase tracking-tighter hover:text-brand border-b border-white/10 pb-4"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+            
+            <button 
+              onClick={() => { setIsBookingOpen(true); setIsMenuOpen(false); }}
+              className="mt-4 bg-brand text-black py-6 text-2xl font-display uppercase italic tracking-tighter flex items-center justify-center gap-3 shadow-[8px_8px_0px_0px_rgba(225,6,0,0.2)]"
+            >
+              <Calendar size={24} />
+              Agendar Agora
+            </button>
+
+            <div className="mt-auto pt-10 flex flex-col gap-6">
+              <p className="text-xs uppercase tracking-[0.4em] text-white/40 font-mono">Siga a @ownbarberclub</p>
+              <div className="flex gap-10">
+                <a href="https://www.instagram.com/ownbarberclub_/" target="_blank" className="text-white hover:text-brand transition-colors"><Instagram size={32} /></a>
+                <a href="https://wa.me/5549999250412" target="_blank" className="text-white hover:text-brand transition-colors"><Phone size={32} /></a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center pt-20">
