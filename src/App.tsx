@@ -28,13 +28,13 @@ import efipiKaique from "./assets/efapi-kaique.jpeg";
 import efipiCarlos from "./assets/efapi-carlos.JPG";
 import efipiCadu from "./assets/efapi-cadu.JPG";
 import galeria1 from "./assets/galeria-01.jpg";
-import galeria2 from "./assets/galeria-02.jpg";
-import galeria3 from "./assets/galeira-03.jpg";
+import galeria2 from "./assets/galeria-02.jpeg";
+import galeria3 from "./assets/galeria-03.JPG";
 import galeria4 from "./assets/galeria-04.jpg";
 import galeria5 from "./assets/galeria-05.jpg";
-import galeria6 from "./assets/galeria-06.jpg";
+import galeria6 from "./assets/galeria-06.JPG";
 import galeria7 from "./assets/galeria-07.jpg";
-import galeria8 from "./assets/galeria-08.jpg";
+import galeria8 from "./assets/galeria-08.JPG";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -561,7 +561,7 @@ export default function App() {
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+            className="flex overflow-x-auto md:grid md:grid-cols-4 gap-4 pb-8 hide-scrollbar snap-x snap-mandatory"
           >
             {[
               galeria1,
@@ -576,8 +576,7 @@ export default function App() {
               <motion.div
                 key={idx}
                 variants={staggerItem}
-                whileHover={{ scale: 1.05 }}
-                className="aspect-square overflow-hidden border-2 border-white/10 will-change-transform"
+                className="flex-none w-72 md:w-full aspect-square overflow-hidden border-2 border-white/10 group snap-center will-change-transform"
               >
                 <ScrollRevealImg
                   src={img}
