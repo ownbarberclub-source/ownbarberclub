@@ -201,7 +201,7 @@ export default function App() {
               <p className="text-xs uppercase tracking-[0.4em] text-white/40 font-mono">Siga a @ownbarberclub</p>
               <div className="flex gap-10">
                 <a href="https://www.instagram.com/ownbarberclub_/" target="_blank" className="text-white hover:text-brand transition-colors"><Instagram size={32} /></a>
-                <a href="https://wa.me/5549999250412" target="_blank" className="text-white hover:text-brand transition-colors"><Phone size={32} /></a>
+                <a href="https://wa.me/5549989117337" target="_blank" className="text-white hover:text-brand transition-colors"><Phone size={32} /></a>
               </div>
             </div>
           </motion.div>
@@ -771,7 +771,7 @@ export default function App() {
               <div className="mt-20 flex flex-col gap-4">
                 <div className="flex items-center gap-4 text-xl">
                   <Phone className="text-brand" />
-                  <span className="font-mono">(49) 99925-0412</span>
+                  <span className="font-mono">(49) 98911-7337</span>
                 </div>
               </div>
             </div>
@@ -919,7 +919,7 @@ export default function App() {
         </motion.button>
         
         <motion.a
-          href="https://wa.me/5549999250412"
+          href="https://wa.me/5549989117337"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1, rotate: -5 }}
