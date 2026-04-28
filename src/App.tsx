@@ -42,6 +42,28 @@ export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const targetDate = new Date('2026-06-06T16:00:00-03:00').getTime();
+    return Math.max(0, targetDate - new Date().getTime());
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const targetDate = new Date('2026-06-06T16:00:00-03:00').getTime();
+      const current = Math.max(0, targetDate - new Date().getTime());
+      setTimeLeft(current);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (ms: number) => {
+    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+    return `${days}D ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
+
   // Componente de imagem que revela cor no scroll (mobile) e suaviza o carregamento
   const ScrollRevealImg = useCallback(({ src, alt, className = "", ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const imgRef = useRef<HTMLImageElement>(null);
@@ -228,16 +250,29 @@ export default function App() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              className="flex flex-col md:flex-row md:items-end justify-between gap-10"
             >
-              <h1 className="text-[15vw] md:text-[12vw] leading-[0.8] mb-4">
-                OWN <br />
-                BARBER <br />
-                <span className="text-brand">CLUB.</span>
-              </h1>
-              <div className="flex flex-wrap gap-4 mt-8">
-                <span className="px-4 py-2 bg-white text-black font-bold uppercase text-xs tracking-widest">Estilo</span>
-                <span className="px-4 py-2 bg-brand text-black font-bold uppercase text-xs tracking-widest">Atitude</span>
-                <span className="px-4 py-2 border border-white text-white font-bold uppercase text-xs tracking-widest">Exclusividade</span>
+              <div>
+                <h1 className="text-[15vw] md:text-[12vw] leading-[0.8] mb-4">
+                  OWN <br />
+                  BARBER <br />
+                  <span className="text-brand">CLUB.</span>
+                </h1>
+                <div className="flex flex-wrap gap-4 mt-8">
+                  <span className="px-4 py-2 bg-white text-black font-bold uppercase text-xs tracking-widest">Estilo</span>
+                  <span className="px-4 py-2 bg-brand text-black font-bold uppercase text-xs tracking-widest">Atitude</span>
+                  <span className="px-4 py-2 border border-white text-white font-bold uppercase text-xs tracking-widest">Exclusividade</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-start md:items-end gap-4 mb-4 md:mb-12">
+                <p className="text-xl md:text-3xl font-display uppercase tracking-widest max-w-sm text-left md:text-right border-l-4 md:border-l-0 md:border-r-4 border-brand pl-4 md:pl-0 md:pr-4 py-2 bg-black/40 backdrop-blur-md">
+                  Entre para o nosso <span className="text-brand">clube de fidelidade</span>
+                </p>
+                <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
+                  <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
+                  {formatTime(timeLeft)}
+                </button>
               </div>
             </motion.div>
           </div>
