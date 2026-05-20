@@ -25,7 +25,6 @@ import avenidaNasser from "./assets/avenida-nasser.jpg";
 import efipiEduardo from "./assets/efapi-eduardo.jpeg";
 import efipiTiago from "./assets/efapi-tiago.jpg";
 import efipiKaique from "./assets/efapi-kaique.jpeg";
-import efipiCarlos from "./assets/efapi-carlos.JPG";
 import efipiCadu from "./assets/efapi-cadu.JPG";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpeg";
@@ -689,7 +688,6 @@ export default function App() {
                   { name: "Eduardo", role: "Chefe dos Box", img: efipiEduardo },
                   { name: "Tiago", role: "Mecânico Geral", img: efipiTiago },
                   { name: "Kaique", role: "Engenheiro de Performance", img: efipiKaique },
-                  { name: "Carlos", role: "Especialista em Aerodinâmica", img: efipiCarlos },
                   { name: "Cadu", role: "Técnico de Setup", img: efipiCadu },
                 ]
               }
