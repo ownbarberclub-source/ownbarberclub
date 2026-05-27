@@ -361,9 +361,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div {...fadeIn} className="text-center mb-20">
             <h2 className="text-6xl md:text-9xl mb-4 text-black">ASSINATURA.</h2>
-            <p className="text-2xl font-display uppercase tracking-widest bg-black text-brand inline-block px-6 py-2">
-              Somos a elite do corte ilimitado
-            </p>
+
           </motion.div>
 
           <div className="relative group">
