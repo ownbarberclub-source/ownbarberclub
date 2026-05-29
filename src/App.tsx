@@ -381,31 +381,6 @@ export default function App() {
             >
               {[
                 { 
-                  name: "Essencial Corte", 
-                  price: "117", 
-                  desc: "Esteja sempre pronto, qualquer dia da semana.",
-                  tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/d4vtuaa4" 
-                },
-                { 
-                  name: "Essencial Barba", 
-                  price: "137", 
-                  desc: "Esteja sempre pronto, qualquer dia da semana.",
-                  tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/orfipymn" 
-                },
-                { 
-                  name: "Essencial Combo", 
-                  price: "197", 
-                  desc: "O máximo de liberdade e praticidade.",
-                  tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/9kea4zr0",
-                  highlight: true 
-                },
-                { 
                   name: "Start Corte", 
                   price: "87", 
                   desc: "Perfeito pra manter o cabelo sempre alinhado.",
@@ -429,6 +404,31 @@ export default function App() {
                   features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
                   link: "https://l.appbarber.com.br/ino9jcsg",
                   highlight: true
+                },
+                { 
+                  name: "Essencial Corte", 
+                  price: "117", 
+                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  tag: "TODOS OS DIAS",
+                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/d4vtuaa4" 
+                },
+                { 
+                  name: "Essencial Barba", 
+                  price: "137", 
+                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  tag: "TODOS OS DIAS",
+                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/orfipymn" 
+                },
+                { 
+                  name: "Essencial Combo", 
+                  price: "197", 
+                  desc: "O máximo de liberdade e praticidade.",
+                  tag: "TODOS OS DIAS",
+                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+                  link: "https://l.appbarber.com.br/9kea4zr0",
+                  highlight: true 
                 },
                 { 
                   name: "Chape Corte", 
