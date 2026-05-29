@@ -31,6 +31,18 @@ import galeria6 from "./assets/galeria-06.JPG";
 import galeria7 from "./assets/galeria-07.jpg";
 import galeria8 from "./assets/galeria-08.JPG";
 
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
+
+const trackEvent = (eventName: string, params?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', eventName, params);
+  }
+};
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isIgOpen, setIsIgOpen] = useState(false);
@@ -169,7 +181,7 @@ export default function App() {
               </a>
             ))}
             <button 
-              onClick={() => setIsBookingOpen(true)}
+              onClick={() => { trackEvent('click_agendar', { location: 'header_desktop' }); setIsBookingOpen(true); }}
               className="bg-brand text-black px-6 py-2 font-bold uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(225,6,0,0.3)]"
             >
               Agendar
@@ -207,7 +219,7 @@ export default function App() {
             </div>
             
             <button 
-              onClick={() => { setIsBookingOpen(true); setIsMenuOpen(false); }}
+              onClick={() => { trackEvent('click_agendar', { location: 'menu_mobile' }); setIsBookingOpen(true); setIsMenuOpen(false); }}
               className="mt-4 bg-brand text-black py-6 text-2xl font-display uppercase italic tracking-tighter flex items-center justify-center gap-3 shadow-[8px_8px_0px_0px_rgba(225,6,0,0.2)]"
             >
               <Calendar size={24} />
@@ -516,6 +528,7 @@ export default function App() {
                     href={plan.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('click_plano', { plan_name: plan.name, plan_price: plan.price })}
                     className={`relative z-10 block py-4 text-center font-bold uppercase tracking-widest border-2 transition-all hover:scale-105 active:scale-95 ${
                       plan.chape 
                         ? 'bg-white text-chape border-white' 
