@@ -9,15 +9,11 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import clube from "./assets/clube.JPG";
-// Equipe Tattoo
-import equipeBruna from "./assets/equipe-bruna.jpg";
-import equipeThiago from "./assets/tatuador-thiago.jpg";
 // Equipe Centro
 import centroJohn from "./assets/equipe-john.JPG";
 import centroVitinho from "./assets/equipe-vitor.JPG";
 import centroDouglas from "./assets/equipe-douglas.JPG";
 import centroJulio from "./assets/equipe-julio.JPG";
-import centroThiago from "./assets/equipe-thiago.JPG";
 // Equipe Avenida
 import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
 import avenidaNasser from "./assets/avenida-nasser.jpg";
@@ -163,7 +159,7 @@ export default function App() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-10">
-            {["Sobre", "Clube", "Serviços", "Tattoo", "Equipe", "Unidades"].map((item) => (
+            {["Sobre", "Clube", "Serviços", "Equipe", "Unidades"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -198,7 +194,7 @@ export default function App() {
             className="fixed inset-0 top-20 bg-black z-[9999] p-10 flex flex-col gap-8 overflow-y-auto"
           >
             <div className="flex flex-col gap-6">
-              {["Sobre", "Clube", "Serviços", "Tattoo", "Equipe", "Unidades"].map((item) => (
+              {["Sobre", "Clube", "Serviços", "Equipe", "Unidades"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -569,48 +565,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Tattoo Section */}
-      <section id="tattoo" className="py-32 px-6 bg-black relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div {...fadeIn}>
-              <span className="text-brand font-mono uppercase tracking-[0.5em] text-sm mb-4 block">Exclusive Space</span>
-              <h2 className="text-7xl md:text-9xl mb-10">TATTOO & <br /> PIERCING.</h2>
-              <p className="text-xl text-white/70 font-light leading-relaxed mb-12">
-                Um espaço exclusivo dentro da nossa unidade Centro. Arte na pele com a mesma excelência e cuidado que você já conhece.
-              </p>
-
-              <motion.div 
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="whileInView"
-                className="grid grid-cols-1 sm:grid-cols-3 gap-8"
-              >
-                {[
-                  { name: "Bruna", role: "Body Piercer", img: equipeBruna },
-                  { name: "Thiago", role: "Tattoo Artist", img: equipeThiago },
-                ].map((artist, idx) => (
-                  <motion.div key={idx} variants={staggerItem} className="group">
-                    <div className="aspect-square overflow-hidden border-2 border-white/10 group-hover:border-brand transition-colors mb-4">
-                      <ScrollRevealImg
-                        src={artist.img}
-                        alt={artist.name}
-                        className="w-full h-full object-cover"
-                        referrerPolicy="no-referrer"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <h4 className="text-xl font-display">{artist.name}</h4>
-                    <p className="text-brand font-mono text-[10px] uppercase tracking-widest">{artist.role}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Section */}
       <section id="galeria" className="py-32 px-6 bg-charcoal border-y-4 border-white/10">
         <div className="max-w-7xl mx-auto">
@@ -670,7 +624,6 @@ export default function App() {
                   { name: "Vitinho", role: "Analista de Telemetria", img: centroVitinho },
                   { name: "Douglas", role: "Mecânico Geral", img: centroDouglas },
                   { name: "Julio", role: "Engenheiro de Pista", img: centroJulio },
-                  { name: "Thiago", role: "Especialista em Ajustes", img: centroThiago },
                 ]
               },
               {
