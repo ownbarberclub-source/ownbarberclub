@@ -12,7 +12,6 @@ import clube from "./assets/clube.JPG";
 // Equipe Centro
 import centroJohn from "./assets/equipe-john.JPG";
 import centroVitinho from "./assets/equipe-vitor.JPG";
-import centroDouglas from "./assets/equipe-douglas.JPG";
 import centroJulio from "./assets/equipe-julio.JPG";
 // Equipe Avenida
 import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
@@ -635,7 +634,6 @@ export default function App() {
                 barbers: [
                   { name: "John", role: "Chefe dos Box", img: centroJohn },
                   { name: "Vitinho", role: "Analista de Telemetria", img: centroVitinho },
-                  { name: "Douglas", role: "Mecânico Geral", img: centroDouglas },
                   { name: "Julio", role: "Engenheiro de Pista", img: centroJulio },
                 ]
               },
