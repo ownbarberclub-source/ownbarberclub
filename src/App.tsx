@@ -49,13 +49,13 @@ export default function App() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const [timeLeft, setTimeLeft] = useState(() => {
-    const targetDate = new Date('2026-06-12T19:00:00-03:00').getTime();
+    const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
     return Math.max(0, targetDate - new Date().getTime());
   });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const targetDate = new Date('2026-06-12T19:00:00-03:00').getTime();
+      const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
       const current = Math.max(0, targetDate - new Date().getTime());
       setTimeLeft(current);
     }, 1000);
