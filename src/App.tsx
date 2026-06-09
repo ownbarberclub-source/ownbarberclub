@@ -337,6 +337,47 @@ export default function App() {
         </div>
       </section>
 
+      {/* Chapecoense Partnership Section */}
+      <section className="py-24 bg-chape relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="grid grid-cols-10 h-full">
+            {[...Array(10)].map((_, i) => (
+              <div key={i} className="border-r border-white/20 h-full" />
+            ))}
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <motion.div
+            {...fadeIn}
+            className="flex flex-col md:flex-row items-center gap-12"
+          >
+            <div className="w-48 h-48 bg-white p-4 flex items-center justify-center shrink-0 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.3)]">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg/500px-Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg.png"
+                alt="Chapecoense Logo"
+                className="w-full h-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="text-center md:text-left flex-1">
+              <span className="inline-block px-3 py-1 bg-black text-white font-mono text-xs tracking-widest uppercase mb-4">Parceria Exclusiva</span>
+              <h2 className="text-5xl md:text-7xl text-white mb-6">BARBEARIA OFICIAL DA CHAPECOENSE.</h2>
+              <p className="text-xl text-white/80 font-light max-w-2xl mb-8">
+                O estilo que entra em campo. Temos o orgulho de cuidar do visual dos atletas e da comissão técnica do Verdão do Oeste.
+              </p>
+              <a
+                href="#/parcerias/chapecoense"
+                className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 font-display text-xl uppercase italic tracking-tighter hover:bg-white hover:text-black transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 cursor-pointer"
+              >
+                Ver Benefícios de Sócio
+                <ChevronRight size={18} />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="sobre" className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">

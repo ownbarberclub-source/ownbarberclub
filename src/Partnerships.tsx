@@ -24,7 +24,18 @@ interface Partner {
     text: string;
     accent: string;
     border: string;
-    cardBg: string;
+    cardBg?: string;
+    cardText?: string;
+    cardBorder?: string;
+    cardShadow?: string;
+    checkColor?: string;
+    btnStyle?: string;
+    highlightCardBg?: string;
+    highlightCardText?: string;
+    highlightCardBorder?: string;
+    highlightCardShadow?: string;
+    highlightBtnStyle?: string;
+    highlightCheckColor?: string;
   };
   plans: PartnerPlan[];
 }
@@ -42,7 +53,18 @@ const PARTNERS: Partner[] = [
       text: "text-white",
       accent: "text-white",
       border: "border-white/20",
-      cardBg: "bg-[#00522c]"
+      cardBg: "bg-chape",
+      cardText: "text-white",
+      cardBorder: "border-black/20",
+      cardShadow: "shadow-[20px_20px_0px_0px_rgba(0,100,55,0.2)]",
+      checkColor: "text-white",
+      btnStyle: "bg-white text-chape border-white hover:bg-black hover:text-white hover:border-black",
+      highlightCardBg: "bg-chape",
+      highlightCardText: "text-white",
+      highlightCardBorder: "border-white",
+      highlightCardShadow: "shadow-[20px_20px_0px_0px_rgba(0,100,55,0.3)]",
+      highlightCheckColor: "text-white",
+      highlightBtnStyle: "bg-white text-chape border-white hover:bg-black hover:text-white hover:border-black"
     },
     plans: [
       {
@@ -305,65 +327,96 @@ export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) 
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6">
-                  {selectedPartner.plans.map((plan, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ y: -5 }}
-                      className={`p-10 border-4 border-black flex flex-col justify-between relative overflow-hidden shadow-[15px_15px_0px_0px_rgba(255,255,255,0.05)] ${
-                        plan.highlight
-                          ? 'bg-brand text-black shadow-[15px_15px_0px_0px_rgba(225,6,0,0.2)] border-brand'
-                          : 'bg-charcoal text-white border-white/10'
-                      }`}
-                    >
-                      <div>
-                        <div className="flex justify-between items-start mb-4">
-                          <span className={`text-xs font-mono font-bold tracking-widest uppercase inline-block px-2 py-1 ${
-                            plan.highlight ? 'bg-black text-brand' : 'bg-white/10 text-white'
-                          }`}>
-                            {plan.tag}
-                          </span>
-                        </div>
-                        <h4 className="text-3xl font-black italic uppercase tracking-tight mb-2 leading-none">{plan.name}</h4>
-                        <p className={`mb-6 text-sm ${plan.highlight ? 'text-black/70 font-medium' : 'text-white/60'}`}>
-                          {plan.desc}
-                        </p>
-                        <div className="flex items-baseline gap-1 mb-8">
-                          <span className="text-sm font-bold">R$</span>
-                          <span className="text-6xl font-display font-black leading-none">{plan.price}</span>
-                          <span className="text-xs font-bold uppercase">/mês</span>
-                        </div>
-                        <ul className="space-y-3 mb-10 text-sm">
-                          {plan.features.map((f, i) => (
-                            <li key={i} className="flex items-start gap-3 font-medium">
-                              <Check size={18} className={`shrink-0 mt-0.5 ${plan.highlight ? 'text-black' : 'text-brand'}`} />
-                              {f}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <a
-                        href={plan.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => {
-                          if (trackEvent) {
-                            trackEvent("click_partner_plan", {
-                              partner_id: selectedPartner.id,
-                              plan_name: plan.name,
-                              price: plan.price
-                            });
-                          }
-                        }}
-                        className={`block py-4 text-center font-black uppercase tracking-widest border-2 transition-all hover:scale-105 active:scale-95 ${
-                          plan.highlight
-                            ? 'bg-black text-brand border-black hover:bg-white hover:text-black hover:border-white'
-                            : 'bg-brand text-black border-brand hover:bg-white hover:border-white hover:text-black'
-                        }`}
+                  {selectedPartner.plans.map((plan, idx) => {
+                    const theme = selectedPartner.theme;
+                    
+                    const cardBg = plan.highlight 
+                      ? (theme.highlightCardBg || "bg-brand") 
+                      : (theme.cardBg || "bg-charcoal");
+                    
+                    const cardText = plan.highlight 
+                      ? (theme.highlightCardText || "text-black") 
+                      : (theme.cardText || "text-white");
+                    
+                    const cardBorder = plan.highlight 
+                      ? (theme.highlightCardBorder || "border-brand") 
+                      : (theme.cardBorder || "border-white/10");
+                    
+                    const cardShadow = plan.highlight 
+                      ? (theme.highlightCardShadow || "shadow-[15px_15px_0px_0px_rgba(225,6,0,0.2)]") 
+                      : (theme.cardShadow || "shadow-[15px_15px_0px_0px_rgba(255,255,255,0.05)]");
+                    
+                    const checkColor = plan.highlight 
+                      ? (theme.highlightCheckColor || "text-black") 
+                      : (theme.checkColor || "text-brand");
+                    
+                    const btnStyle = plan.highlight 
+                      ? (theme.highlightBtnStyle || "bg-black text-brand border-black hover:bg-white hover:text-black hover:border-white") 
+                      : (theme.btnStyle || "bg-brand text-black border-brand hover:bg-white hover:border-white hover:text-black");
+
+                    const tagStyle = plan.highlight
+                      ? "bg-black text-brand"
+                      : "bg-white/10 text-white";
+
+                    return (
+                      <motion.div
+                        key={idx}
+                        whileHover={{ y: -5 }}
+                        className={`p-10 border-4 flex flex-col justify-between relative overflow-hidden ${cardBg} ${cardText} ${cardBorder} ${cardShadow}`}
                       >
-                        EXPERIÊNCIA DE CAMPEÃO
-                      </a>
-                    </motion.div>
-                  ))}
+                        {/* Watermark Logo */}
+                        <div className="absolute -top-4 -right-4 opacity-10 rotate-12 pointer-events-none select-none">
+                          <img 
+                            src={selectedPartner.logo} 
+                            alt="" 
+                            className="w-40 h-40 object-contain"
+                          />
+                        </div>
+
+                        <div className="relative z-10">
+                          <div className="flex justify-between items-start mb-4">
+                            <span className={`text-xs font-mono font-bold tracking-widest uppercase inline-block px-2 py-1 ${tagStyle}`}>
+                              {plan.tag}
+                            </span>
+                          </div>
+                          <h4 className="text-3xl font-black italic uppercase tracking-tight mb-2 leading-none">{plan.name}</h4>
+                          <p className={`mb-6 text-sm ${plan.highlight ? 'opacity-85 font-medium' : 'opacity-70'}`}>
+                            {plan.desc}
+                          </p>
+                          <div className="flex items-baseline gap-1 mb-8">
+                            <span className="text-sm font-bold">R$</span>
+                            <span className="text-6xl font-display font-black leading-none">{plan.price}</span>
+                            <span className="text-xs font-bold uppercase">/mês</span>
+                          </div>
+                          <ul className="space-y-3 mb-10 text-sm">
+                            {plan.features.map((f, i) => (
+                              <li key={i} className="flex items-start gap-3 font-medium">
+                                <Check size={18} className={`shrink-0 mt-0.5 ${checkColor}`} />
+                                {f}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <a
+                          href={plan.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            if (trackEvent) {
+                              trackEvent("click_partner_plan", {
+                                partner_id: selectedPartner.id,
+                                plan_name: plan.name,
+                                price: plan.price
+                              });
+                            }
+                          }}
+                          className={`relative z-10 block py-4 text-center font-black uppercase tracking-widest border-2 transition-all hover:scale-105 active:scale-95 ${btnStyle}`}
+                        >
+                          EXPERIÊNCIA DE CAMPEÃO
+                        </a>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
 
