@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowLeft, Search, Check, Scissors, Phone, Building2, ChevronRight, Calendar, Sparkles } from "lucide-react";
+import { ArrowLeft, Search, Check, Scissors, Phone, Building2, ChevronRight, Calendar, Sparkles, Share2 } from "lucide-react";
 
 interface PartnerPlan {
   name: string;
@@ -104,6 +104,30 @@ interface PartnershipsProps {
 export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPartnerId, setSelectedPartnerId] = useState<string | null>(null);
+  const [shareFeedback, setShareFeedback] = useState(false);
+
+  const handleShare = () => {
+    if (!selectedPartner) return;
+    const shareUrl = `${window.location.origin}${window.location.pathname}#/parcerias/${selectedPartner.id}`;
+
+    if (navigator.share) {
+      navigator.share({
+        title: `Planos Exclusivos - ${selectedPartner.name}`,
+        text: `Confira os planos de assinatura ilimitados do Own Barber Club exclusivos para parceiros ${selectedPartner.name}!`,
+        url: shareUrl,
+      })
+      .then(() => {
+        if (trackEvent) trackEvent("share_partner_success", { partner_id: selectedPartner.id });
+      })
+      .catch((err) => console.log(err));
+    } else {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        setShareFeedback(true);
+        setTimeout(() => setShareFeedback(false), 2000);
+        if (trackEvent) trackEvent("share_partner_copied", { partner_id: selectedPartner.id });
+      });
+    }
+  };
 
   // Monitorar hash para links diretos como #/parcerias/chapecoense
   useEffect(() => {
@@ -315,6 +339,15 @@ export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) 
                     <p className="text-lg md:text-xl font-light text-white/95 max-w-3xl leading-relaxed">
                       {selectedPartner.longDescription || selectedPartner.description}
                     </p>
+                    <div className="mt-8 flex justify-center lg:justify-start">
+                      <button
+                        onClick={handleShare}
+                        className="group inline-flex items-center gap-2 bg-black text-white hover:bg-white hover:text-black px-6 py-3 text-xs font-mono font-bold uppercase tracking-widest transition-colors cursor-pointer border border-white/10"
+                      >
+                        <Share2 size={14} className="group-hover:scale-110 transition-transform" />
+                        {shareFeedback ? "Link Copiado!" : "Compartilhar Link"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
