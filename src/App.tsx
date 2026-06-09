@@ -4,7 +4,7 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar } from "lucide-react";
+import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar, Crown, GraduationCap } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
@@ -160,20 +160,32 @@ export default function App() {
   };
 
   const services = [
-    { name: "Corte de Cabelo", icon: Scissors },
-    { name: "Barba Premium", icon: User },
-    { name: "Sobrancelha", icon: Check },
-    { name: "Alisamento", icon: Zap },
-    { name: "Argila", icon: Droplets },
-    { name: "Depilação (Cera)", icon: Flame },
-    { name: "Hidratação", icon: Droplets },
-    { name: "Limpeza de Pele", icon: Sparkles },
-    { name: "Luzes", icon: Zap },
-    { name: "Matização", icon: Paintbrush },
-    { name: "Pigmentação", icon: Paintbrush },
-    { name: "Platinado", icon: Sparkles },
-    { name: "Selagem", icon: Check },
-    { name: "Tonalizante", icon: Paintbrush },
+    { name: "Acabamento", price: "20,00", icon: Scissors },
+    { name: "Adicional Freestyle", price: "15,00", icon: Paintbrush },
+    { name: "Alisamento Americano", price: "80,00", icon: Zap },
+    { name: "Argila", price: "60,00", icon: Droplets },
+    { name: "Barba", price: "55,00", icon: User },
+    { name: "Camuflagem", price: "60,00", icon: Paintbrush },
+    { name: "Cone Hindu", price: "45,00", icon: Flame },
+    { name: "Corte", price: "60,00", icon: Scissors },
+    { name: "Corte + Barba", price: "100,00", icon: Scissors },
+
+    { name: "Depilação na Cera - Nariz ou Orelha", price: "20,00", icon: Flame },
+    { name: "Freestyle (corte com desenho)", price: "75,00", icon: Paintbrush },
+    { name: "Hidratação", price: "40,00", icon: Droplets },
+    { name: "Limpeza de Pele", price: "40,00", icon: Sparkles },
+    { name: "Luzes", price: "200,00", icon: Zap },
+    { name: "Matização", price: "20,00", icon: Paintbrush },
+    { name: "Pigmentação", price: "60,00", icon: Paintbrush },
+    { name: "Platinado", price: "250,00", icon: Sparkles },
+    { name: "Raspar", price: "45,00", icon: Scissors },
+    { name: "Selagem", price: "120,00", icon: Check },
+    { name: "Sobrancelha", price: "20,00", icon: Check },
+    { name: "Sobrancelha com Cera", price: "30,00", icon: Flame },
+    { name: "Tonalizante", price: "60,00", icon: Paintbrush },
+    { name: "VIP - Barba", price: "150,00", icon: Crown },
+    { name: "VIP - Corte", price: "110,00", icon: Crown },
+    { name: "VIP - Corte + Barba", price: "220,00", icon: Crown },
   ];
 
   return (
@@ -435,7 +447,7 @@ export default function App() {
               ref={scrollContainerRef}
               className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 -mx-6 px-6 hide-scrollbar md:-mx-12 md:px-12 scroll-smooth"
             >
-              {[
+              {([
                 { 
                   name: "Start Corte", 
                   price: "87", 
@@ -486,7 +498,7 @@ export default function App() {
                   link: "https://l.appbarber.com.br/9kea4zr0",
                   highlight: true 
                 },
-              ].map((plan, idx) => (
+              ] as any[]).map((plan, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ y: -5 }}
@@ -581,13 +593,20 @@ export default function App() {
               <motion.div
                 key={idx}
                 variants={staggerItem}
-                className="p-8 border-2 border-white/10 hover:border-brand transition-all group relative overflow-hidden will-change-transform"
+                className="p-8 border-2 border-white/10 hover:border-brand transition-all group relative overflow-hidden will-change-transform flex flex-col justify-between min-h-[180px] bg-black/40 backdrop-blur-sm"
               >
-                <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none select-none">
                   <service.icon size={100} />
                 </div>
-                <service.icon className="text-brand mb-6 w-8 h-8" />
-                <h3 className="text-2xl tracking-tight">{service.name}</h3>
+                <div>
+                  <service.icon className="text-brand mb-6 w-8 h-8 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-2xl tracking-tight transition-transform duration-300 group-hover:-translate-y-1">{service.name}</h3>
+                </div>
+                <div className="mt-4">
+                  <span className="inline-block font-mono text-brand text-xl font-bold transition-all duration-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
+                    R$ {service.price}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
