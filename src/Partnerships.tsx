@@ -125,25 +125,25 @@ const PARTNERS: Partner[] = [
         name: "Aurora Corte",
         price: "77",
         desc: "Associado SER Aurora tem vantagem exclusiva.",
-        tag: "COLABORADOR",
+        tag: "ASSOCIADO",
         features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://sites.appbarber.com.br/link/14836635/ownbarberclubcentro"
+        link: "https://l.appbarber.com.br/hh8yg4pb"
       },
       {
         name: "Aurora Barba",
         price: "107",
         desc: "Associado SER Aurora tem vantagem exclusiva.",
-        tag: "COLABORADOR",
+        tag: "ASSOCIADO",
         features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://sites.appbarber.com.br/link/14836635/ownbarberclubcentro"
+        link: "https://l.appbarber.com.br/hh3v2vlj"
       },
       {
         name: "Aurora Combo",
         price: "157",
         desc: "Associado SER Aurora tem vantagem exclusiva.",
-        tag: "COLABORADOR",
+        tag: "ASSOCIADO",
         features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://sites.appbarber.com.br/link/14836635/ownbarberclubcentro",
+        link: "https://l.appbarber.com.br/g3ld6kp9",
         highlight: true
       }
     ]
