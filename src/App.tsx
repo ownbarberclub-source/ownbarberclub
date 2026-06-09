@@ -8,6 +8,7 @@ import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
+import Partnerships from "./Partnerships";
 import clube from "./assets/clube.JPG";
 // Equipe Centro
 import centroJohn from "./assets/equipe-john.JPG";
@@ -47,6 +48,23 @@ export default function App() {
   const [isIgOpen, setIsIgOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias'>('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith("#/parcerias")) {
+        setCurrentRoute('parcerias');
+        window.scrollTo(0, 0);
+      } else {
+        setCurrentRoute('home');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   const [timeLeft, setTimeLeft] = useState(() => {
     const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
@@ -179,6 +197,12 @@ export default function App() {
                 {item}
               </a>
             ))}
+            <a
+              href="#/parcerias"
+              className={`text-xs font-bold uppercase tracking-[0.2em] hover:text-brand transition-colors ${currentRoute === 'parcerias' ? 'text-brand' : ''}`}
+            >
+              Parcerias
+            </a>
             <button 
               onClick={() => { trackEvent('click_agendar', { location: 'header_desktop' }); setIsBookingOpen(true); }}
               className="bg-brand text-black px-6 py-2 font-bold uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(225,6,0,0.3)]"
@@ -215,6 +239,13 @@ export default function App() {
                   {item}
                 </a>
               ))}
+              <a
+                href="#/parcerias"
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-4xl font-display uppercase tracking-tighter border-b border-white/10 pb-4 ${currentRoute === 'parcerias' ? 'text-brand' : 'hover:text-brand'}`}
+              >
+                Parcerias
+              </a>
             </div>
             
             <button 
@@ -236,8 +267,15 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center pt-20">
+      {currentRoute === 'parcerias' ? (
+        <Partnerships
+          onBack={() => { window.location.hash = ""; }}
+          trackEvent={trackEvent}
+        />
+      ) : (
+        <>
+          {/* Hero Section */}
+          <section className="relative h-screen flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0">
           <img
             src={fachada}
@@ -296,40 +334,6 @@ export default function App() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Chapecoense Partnership Section */}
-      <section className="py-24 bg-chape relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="grid grid-cols-10 h-full">
-            {[...Array(10)].map((_, i) => (
-              <div key={i} className="border-r border-white/20 h-full" />
-            ))}
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div
-            {...fadeIn}
-            className="flex flex-col md:flex-row items-center gap-12"
-          >
-            <div className="w-48 h-48 bg-white p-4 flex items-center justify-center shrink-0 shadow-[20px_20px_0px_0px_rgba(0,0,0,0.3)]">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg/500px-Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg.png"
-                alt="Chapecoense Logo"
-                className="w-full h-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="text-center md:text-left">
-              <span className="inline-block px-3 py-1 bg-black text-white font-mono text-xs tracking-widest uppercase mb-4">Parceria Exclusiva</span>
-              <h2 className="text-5xl md:text-7xl text-white mb-6">BARBEARIA OFICIAL DA CHAPECOENSE.</h2>
-              <p className="text-xl text-white/80 font-light max-w-2xl">
-                O estilo que entra em campo. Temos o orgulho de cuidar do visual dos atletas e da comissão técnica do Verdão do Oeste.
-              </p>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -440,34 +444,6 @@ export default function App() {
                   features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
                   link: "https://l.appbarber.com.br/9kea4zr0",
                   highlight: true 
-                },
-                { 
-                  name: "Chape Corte", 
-                  price: "77", 
-                  desc: "Sócio Chape tem vantagem exclusiva.",
-                  tag: "SÓCIO CHAPE",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"], 
-                  link: "https://l.appbarber.com.br/afd1u8yc",
-                  chape: true
-                },
-                { 
-                  name: "Chape Barba", 
-                  price: "107", 
-                  desc: "Sócio Chape tem vantagem exclusiva.",
-                  tag: "SÓCIO CHAPE",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"], 
-                  link: "https://l.appbarber.com.br/s1su0uyi",
-                  chape: true
-                },
-                { 
-                  name: "Chape Combo", 
-                  price: "157", 
-                  desc: "Sócio Chape tem vantagem exclusiva.",
-                  tag: "SÓCIO CHAPE",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"], 
-                  link: "https://l.appbarber.com.br/a710n5kg",
-                  chape: true,
-                  highlight: true
                 },
               ].map((plan, idx) => (
                 <motion.div
@@ -859,6 +835,8 @@ export default function App() {
           </div>
         </div>
       </section>
+        </>
+      )}
 
       {/* Footer */}
       <footer className="py-20 px-6 text-center border-t-4 border-white pb-32 md:pb-20">
