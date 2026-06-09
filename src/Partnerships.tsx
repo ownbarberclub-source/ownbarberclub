@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft, Search, Check, Scissors, Phone, Building2, ChevronRight, Calendar, Sparkles, Share2 } from "lucide-react";
+import serAuroraLogo from "./assets/ser-aurora.png";
 
 interface PartnerPlan {
   name: string;
@@ -90,6 +91,59 @@ const PARTNERS: Partner[] = [
         tag: "SÓCIO CHAPE",
         features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
         link: "https://l.appbarber.com.br/a710n5kg",
+        highlight: true
+      }
+    ]
+  },
+  {
+    id: "ser-aurora",
+    name: "SER Aurora",
+    logo: serAuroraLogo,
+    badge: "Parceiro Oficial",
+    description: "Descontos e planos de assinatura exclusivos para colaboradores associados à SER Aurora.",
+    longDescription: "Benefício corporativo especial para os colaboradores associados à SER Aurora. Tenha acesso a assinaturas ilimitadas de cabelo, barba ou combo para estar sempre na régua com condições exclusivas nas 3 unidades.",
+    theme: {
+      bg: "bg-[#F39C01]",
+      text: "text-black",
+      accent: "text-black",
+      border: "border-black/10",
+      cardBg: "bg-[#F39C01]",
+      cardText: "text-black",
+      cardBorder: "border-black/20",
+      cardShadow: "shadow-[20px_20px_0px_0px_rgba(243,156,1,0.2)]",
+      checkColor: "text-[#C71918]",
+      btnStyle: "bg-black text-white border-black hover:bg-white hover:text-black hover:border-black",
+      highlightCardBg: "bg-black",
+      highlightCardText: "text-[#F39C01]",
+      highlightCardBorder: "border-[#F39C01]",
+      highlightCardShadow: "shadow-[20px_20px_0px_0px_rgba(0,0,0,0.3)]",
+      highlightCheckColor: "text-[#F39C01]",
+      highlightBtnStyle: "bg-[#F39C01] text-black border-[#F39C01] hover:bg-white hover:text-black hover:border-white"
+    },
+    plans: [
+      {
+        name: "Aurora Corte",
+        price: "77",
+        desc: "Associado SER Aurora tem vantagem exclusiva.",
+        tag: "COLABORADOR",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://sites.appbarber.com.br/link/14836635/ownbarberclubcentro"
+      },
+      {
+        name: "Aurora Barba",
+        price: "107",
+        desc: "Associado SER Aurora tem vantagem exclusiva.",
+        tag: "COLABORADOR",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://sites.appbarber.com.br/link/14836635/ownbarberclubcentro"
+      },
+      {
+        name: "Aurora Combo",
+        price: "157",
+        desc: "Associado SER Aurora tem vantagem exclusiva.",
+        tag: "COLABORADOR",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://sites.appbarber.com.br/link/14836635/ownbarberclubcentro",
         highlight: true
       }
     ]
