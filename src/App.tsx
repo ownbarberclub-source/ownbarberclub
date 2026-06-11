@@ -5,10 +5,11 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar, Crown, GraduationCap } from "lucide-react";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import Partnerships from "./Partnerships";
+import ClubCampaign from "./ClubCampaign";
 import clube from "./assets/clube.JPG";
 // Equipe Centro
 import centroJohn from "./assets/equipe-john.JPG";
@@ -48,13 +49,24 @@ export default function App() {
   const [isIgOpen, setIsIgOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias'>('home');
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias' | 'clube'>('home');
+
+  const isNewCampaignActive = useMemo(() => {
+    // Permite forçar a visualização do clube via parâmetro na URL para testes locais (?testClub=true)
+    if (typeof window !== 'undefined' && window.location.search.includes('testClub=true')) {
+      return true;
+    }
+    return new Date() >= new Date("2026-06-15T00:00:00-03:00");
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash.startsWith("#/parcerias")) {
         setCurrentRoute('parcerias');
+        window.scrollTo(0, 0);
+      } else if (hash.startsWith("#/clube")) {
+        setCurrentRoute('clube');
         window.scrollTo(0, 0);
       } else {
         setCurrentRoute('home');
@@ -264,6 +276,11 @@ export default function App() {
           onBack={() => { window.location.hash = ""; }}
           trackEvent={trackEvent}
         />
+      ) : currentRoute === 'clube' ? (
+        <ClubCampaign
+          onBack={() => { window.location.hash = ""; }}
+          trackEvent={trackEvent}
+        />
       ) : (
         <>
           {/* Hero Section */}
@@ -305,10 +322,20 @@ export default function App() {
                 <p className="text-xl md:text-3xl font-display uppercase tracking-widest max-w-sm text-left md:text-right border-l-4 md:border-l-0 md:border-r-4 border-brand pl-4 md:pl-0 md:pr-4 py-2 bg-black/40 backdrop-blur-md">
                   Entre para o nosso <span className="text-brand">clube de fidelidade</span>
                 </p>
-                <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
-                  <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
-                  Em breve
-                </button>
+                {isNewCampaignActive ? (
+                  <a 
+                    href="#/clube"
+                    onClick={() => trackEvent('click_entrar_clube', { location: 'hero' })}
+                    className="bg-brand text-black px-8 py-4 font-display text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] text-center cursor-pointer"
+                  >
+                    ENTRAR PARA O CLUBE
+                  </a>
+                ) : (
+                  <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
+                    <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
+                    EM BREVE
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>
@@ -429,53 +456,104 @@ export default function App() {
             >
               {([
                 { 
-                  name: "Start Corte", 
-                  price: "87", 
-                  desc: "Perfeito pra manter o cabelo sempre alinhado.",
-                  tag: "SEG A QUA",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/6m5vqc8k" 
+                  name: "OWN One - Corte", 
+                  price: "47", 
+                  desc: "Ideal para quem busca praticidade com um corte mensal garantido.",
+                  tag: "MENSAL",
+                  features: [
+                    "1 corte de cabelo no mês",
+                    "Qualquer dia da semana",
+                    "Atendimento nas 3 unidades",
+                    "20% de desconto em corte adicional",
+                    "Acesso ao Clube de Fidelidade OWN Club",
+                    "10% de desconto em produtos"
+                  ], 
+                  link: "https://l.appbarber.com.br/68nufqnv" 
                 },
                 { 
-                  name: "Start Barba", 
-                  price: "117", 
-                  desc: "Barba sempre desenhada e na régua.",
-                  tag: "SEG A QUA",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/nhq05bpo" 
+                  name: "OWN Start Corte", 
+                  price: "127", 
+                  desc: "Corte de cabelo de segunda a quinta-feira, sempre na régua.",
+                  tag: "SEG A QUI",
+                  features: [
+                    "Uso ilimitado de segunda a quinta-feira",
+                    "Vá quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/h57o2tr1" 
                 },
                 { 
-                  name: "Start Combo", 
-                  price: "167", 
-                  desc: "O combo completo, sempre em dia.",
-                  tag: "SEG A QUA",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/ino9jcsg",
+                  name: "OWN Start Barba", 
+                  price: "157", 
+                  desc: "Barba sempre desenhada e alinhada de segunda a quinta-feira.",
+                  tag: "SEG A QUI",
+                  features: [
+                    "Uso ilimitado de segunda a quinta-feira",
+                    "Vá quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/4dx34dqw" 
+                },
+                { 
+                  name: "OWN Start Combo", 
+                  price: "217", 
+                  desc: "Cabelo e barba completos de segunda a quinta-feira.",
+                  tag: "SEG A QUI",
+                  features: [
+                    "Uso ilimitado de segunda a quinta-feira",
+                    "Vá quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/ne5bpzha",
                   highlight: true
                 },
                 { 
-                  name: "Essencial Corte", 
-                  price: "117", 
-                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  name: "OWN Essencial Corte", 
+                  price: "157", 
+                  desc: "Esteja sempre pronto com corte de cabelo ilimitado qualquer dia.",
                   tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/d4vtuaa4" 
+                  features: [
+                    "Uso ilimitado todos os dias",
+                    "Utilize quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/9m8ot9kd" 
                 },
                 { 
-                  name: "Essencial Barba", 
-                  price: "137", 
-                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  name: "OWN Essencial Barba", 
+                  price: "187", 
+                  desc: "Barba perfeita e alinhada todos os dias da semana.",
                   tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/orfipymn" 
+                  features: [
+                    "Uso ilimitado todos os dias",
+                    "Utilize quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/m2bk9u11" 
                 },
                 { 
-                  name: "Essencial Combo", 
-                  price: "197", 
-                  desc: "O máximo de liberdade e praticidade.",
+                  name: "OWN Essencial Combo", 
+                  price: "257", 
+                  desc: "O máximo de liberdade e praticidade para cabelo e barba.",
                   tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/9kea4zr0",
+                  features: [
+                    "Uso ilimitado todos os dias",
+                    "Utilize quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/80dbyigx",
                   highlight: true 
                 },
               ] as any[]).map((plan, idx) => (
