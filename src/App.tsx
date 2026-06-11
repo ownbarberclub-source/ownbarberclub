@@ -471,28 +471,46 @@ export default function App() {
                   link: "https://l.appbarber.com.br/68nufqnv" 
                 },
                 { 
-                  name: "Start Corte", 
-                  price: "87", 
-                  desc: "Perfeito pra manter o cabelo sempre alinhado.",
-                  tag: "SEG A QUA",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/6m5vqc8k" 
+                  name: "OWN Start Corte", 
+                  price: "127", 
+                  desc: "Corte de cabelo de segunda a quinta-feira, sempre na régua.",
+                  tag: "SEG A QUI",
+                  features: [
+                    "Uso ilimitado de segunda a quinta-feira",
+                    "Vá quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/h57o2tr1" 
                 },
                 { 
-                  name: "Start Barba", 
-                  price: "117", 
-                  desc: "Barba sempre desenhada e na régua.",
-                  tag: "SEG A QUA",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/nhq05bpo" 
+                  name: "OWN Start Barba", 
+                  price: "157", 
+                  desc: "Barba sempre desenhada e alinhada de segunda a quinta-feira.",
+                  tag: "SEG A QUI",
+                  features: [
+                    "Uso ilimitado de segunda a quinta-feira",
+                    "Vá quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/4dx34dqw" 
                 },
                 { 
-                  name: "Start Combo", 
-                  price: "167", 
-                  desc: "O combo completo, sempre em dia.",
-                  tag: "SEG A QUA",
-                  features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/ino9jcsg",
+                  name: "OWN Start Combo", 
+                  price: "217", 
+                  desc: "Cabelo e barba completos de segunda a quinta-feira.",
+                  tag: "SEG A QUI",
+                  features: [
+                    "Uso ilimitado de segunda a quinta-feira",
+                    "Vá quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/ne5bpzha",
                   highlight: true
                 },
                 { 
