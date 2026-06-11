@@ -66,27 +66,7 @@ export default function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  const [timeLeft, setTimeLeft] = useState(() => {
-    const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
-    return Math.max(0, targetDate - new Date().getTime());
-  });
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
-      const current = Math.max(0, targetDate - new Date().getTime());
-      setTimeLeft(current);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (ms: number) => {
-    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((ms % (1000 * 60)) / 1000);
-    return `${days}D ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  };
 
   // Componente de imagem que revela cor no scroll (mobile) e suaviza o carregamento
   const ScrollRevealImg = useCallback(({ src, alt, className = "", ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
@@ -327,7 +307,7 @@ export default function App() {
                 </p>
                 <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
                   <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
-                  {formatTime(timeLeft)}
+                  Em breve
                 </button>
               </div>
             </motion.div>
