@@ -5,10 +5,11 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar, Crown, GraduationCap } from "lucide-react";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import Partnerships from "./Partnerships";
+import ClubCampaign from "./ClubCampaign";
 import clube from "./assets/clube.JPG";
 // Equipe Centro
 import centroJohn from "./assets/equipe-john.JPG";
@@ -48,13 +49,24 @@ export default function App() {
   const [isIgOpen, setIsIgOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias'>('home');
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias' | 'clube'>('home');
+
+  const isNewCampaignActive = useMemo(() => {
+    // Permite forçar a visualização do clube via parâmetro na URL para testes locais (?testClub=true)
+    if (typeof window !== 'undefined' && window.location.search.includes('testClub=true')) {
+      return true;
+    }
+    return new Date() >= new Date("2026-06-15T00:00:00-03:00");
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash.startsWith("#/parcerias")) {
         setCurrentRoute('parcerias');
+        window.scrollTo(0, 0);
+      } else if (hash.startsWith("#/clube")) {
+        setCurrentRoute('clube');
         window.scrollTo(0, 0);
       } else {
         setCurrentRoute('home');
@@ -67,13 +79,13 @@ export default function App() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(() => {
-    const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
+    const targetDate = new Date('2026-06-15T00:00:00-03:00').getTime();
     return Math.max(0, targetDate - new Date().getTime());
   });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const targetDate = new Date('2026-06-14T18:00:00-03:00').getTime();
+      const targetDate = new Date('2026-06-15T00:00:00-03:00').getTime();
       const current = Math.max(0, targetDate - new Date().getTime());
       setTimeLeft(current);
     }, 1000);
@@ -284,6 +296,11 @@ export default function App() {
           onBack={() => { window.location.hash = ""; }}
           trackEvent={trackEvent}
         />
+      ) : currentRoute === 'clube' ? (
+        <ClubCampaign
+          onBack={() => { window.location.hash = ""; }}
+          trackEvent={trackEvent}
+        />
       ) : (
         <>
           {/* Hero Section */}
@@ -325,10 +342,20 @@ export default function App() {
                 <p className="text-xl md:text-3xl font-display uppercase tracking-widest max-w-sm text-left md:text-right border-l-4 md:border-l-0 md:border-r-4 border-brand pl-4 md:pl-0 md:pr-4 py-2 bg-black/40 backdrop-blur-md">
                   Entre para o nosso <span className="text-brand">clube de fidelidade</span>
                 </p>
-                <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
-                  <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
-                  {formatTime(timeLeft)}
-                </button>
+                {isNewCampaignActive ? (
+                  <a 
+                    href="#/clube"
+                    onClick={() => trackEvent('click_entrar_clube', { location: 'hero' })}
+                    className="bg-brand text-black px-8 py-4 font-display text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] text-center cursor-pointer"
+                  >
+                    ENTRAR PARA O CLUBE
+                  </a>
+                ) : (
+                  <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
+                    <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
+                    {formatTime(timeLeft)}
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>
