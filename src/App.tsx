@@ -456,6 +456,21 @@ export default function App() {
             >
               {([
                 { 
+                  name: "OWN One - Corte", 
+                  price: "47", 
+                  desc: "Ideal para quem busca praticidade com um corte mensal garantido.",
+                  tag: "MENSAL",
+                  features: [
+                    "1 corte de cabelo no mês",
+                    "Qualquer dia da semana",
+                    "Atendimento nas 3 unidades",
+                    "20% de desconto em corte adicional",
+                    "Acesso ao Clube de Fidelidade OWN Club",
+                    "10% de desconto em produtos"
+                  ], 
+                  link: "https://l.appbarber.com.br/68nufqnv" 
+                },
+                { 
                   name: "Start Corte", 
                   price: "87", 
                   desc: "Perfeito pra manter o cabelo sempre alinhado.",
