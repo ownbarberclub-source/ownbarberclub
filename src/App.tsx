@@ -514,28 +514,46 @@ export default function App() {
                   highlight: true
                 },
                 { 
-                  name: "Essencial Corte", 
-                  price: "117", 
-                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  name: "OWN Essencial Corte", 
+                  price: "157", 
+                  desc: "Esteja sempre pronto com corte de cabelo ilimitado qualquer dia.",
                   tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/d4vtuaa4" 
+                  features: [
+                    "Uso ilimitado todos os dias",
+                    "Utilize quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/9m8ot9kd" 
                 },
                 { 
-                  name: "Essencial Barba", 
-                  price: "137", 
-                  desc: "Esteja sempre pronto, qualquer dia da semana.",
+                  name: "OWN Essencial Barba", 
+                  price: "187", 
+                  desc: "Barba perfeita e alinhada todos os dias da semana.",
                   tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/orfipymn" 
+                  features: [
+                    "Uso ilimitado todos os dias",
+                    "Utilize quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/m2bk9u11" 
                 },
                 { 
-                  name: "Essencial Combo", 
-                  price: "197", 
-                  desc: "O máximo de liberdade e praticidade.",
+                  name: "OWN Essencial Combo", 
+                  price: "257", 
+                  desc: "O máximo de liberdade e praticidade para cabelo e barba.",
                   tag: "TODOS OS DIAS",
-                  features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
-                  link: "https://l.appbarber.com.br/9kea4zr0",
+                  features: [
+                    "Uso ilimitado todos os dias",
+                    "Utilize quantas vezes quiser no mês",
+                    "Atendimento nas 3 unidades",
+                    "10% de desconto em produtos",
+                    "Acesso ao clube de fidelidade OWN Club"
+                  ], 
+                  link: "https://l.appbarber.com.br/80dbyigx",
                   highlight: true 
                 },
               ] as any[]).map((plan, idx) => (
