@@ -44,6 +44,163 @@ const trackEvent = (eventName: string, params?: Record<string, any>) => {
   }
 };
 
+const OLD_SERVICES_PLANS = [
+  { 
+    name: "Start Corte", 
+    price: "87", 
+    desc: "Perfeito pra manter o cabelo sempre alinhado.",
+    tag: "SEG A QUA",
+    features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+    link: "https://l.appbarber.com.br/6m5vqc8k" 
+  },
+  { 
+    name: "Start Barba", 
+    price: "117", 
+    desc: "Barba sempre desenhada e na régua.",
+    tag: "SEG A QUA",
+    features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+    link: "https://l.appbarber.com.br/nhq05bpo" 
+  },
+  { 
+    name: "Start Combo", 
+    price: "167", 
+    desc: "O combo completo, sempre em dia.",
+    tag: "SEG A QUA",
+    features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+    link: "https://l.appbarber.com.br/ino9jcsg",
+    highlight: true
+  },
+  { 
+    name: "Essencial Corte", 
+    price: "117", 
+    desc: "Esteja sempre pronto, qualquer dia da semana.",
+    tag: "TODOS OS DIAS",
+    features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+    link: "https://l.appbarber.com.br/d4vtuaa4" 
+  },
+  { 
+    name: "Essencial Barba", 
+    price: "137", 
+    desc: "Esteja sempre pronto, qualquer dia da semana.",
+    tag: "TODOS OS DIAS",
+    features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+    link: "https://l.appbarber.com.br/orfipymn" 
+  },
+  { 
+    name: "Essencial Combo", 
+    price: "197", 
+    desc: "O máximo de liberdade e praticidade.",
+    tag: "TODOS OS DIAS",
+    features: ["Uso ilimitado todos os dias", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e serviços extras"], 
+    link: "https://l.appbarber.com.br/9kea4zr0",
+    highlight: true 
+  }
+];
+
+const NEW_SERVICES_PLANS = [
+  { 
+    name: "OWN One - Corte", 
+    price: "47", 
+    desc: "Ideal para quem busca praticidade com um corte mensal garantido.",
+    tag: "MENSAL",
+    features: [
+      "1 corte de cabelo no mês",
+      "Qualquer dia da semana",
+      "Atendimento nas 3 unidades",
+      "20% de desconto em corte adicional",
+      "Acesso ao Clube de Fidelidade OWN Club",
+      "10% de desconto em produtos"
+    ], 
+    link: "https://l.appbarber.com.br/68nufqnv" 
+  },
+  { 
+    name: "OWN Start Corte", 
+    price: "127", 
+    desc: "Corte de cabelo de segunda a quinta-feira, sempre na régua.",
+    tag: "SEG A QUI",
+    features: [
+      "Uso ilimitado de segunda a quinta-feira",
+      "Vá quantas vezes quiser no mês",
+      "Atendimento nas 3 unidades",
+      "10% de desconto em produtos",
+      "Acesso ao clube de fidelidade OWN Club"
+    ], 
+    link: "https://l.appbarber.com.br/h57o2tr1" 
+  },
+  { 
+    name: "OWN Start Barba", 
+    price: "157", 
+    desc: "Barba sempre desenhada e alinhada de segunda a quinta-feira.",
+    tag: "SEG A QUI",
+    features: [
+      "Uso ilimitado de segunda a quinta-feira",
+      "Vá quantas vezes quiser no mês",
+      "Atendimento nas 3 unidades",
+      "10% de desconto em produtos",
+      "Acesso ao clube de fidelidade OWN Club"
+    ], 
+    link: "https://l.appbarber.com.br/4dx34dqw" 
+  },
+  { 
+    name: "OWN Start Combo", 
+    price: "217", 
+    desc: "Cabelo e barba completos de segunda a quinta-feira.",
+    tag: "SEG A QUI",
+    features: [
+      "Uso ilimitado de segunda a quinta-feira",
+      "Vá quantas vezes quiser no mês",
+      "Atendimento nas 3 unidades",
+      "10% de desconto em produtos",
+      "Acesso ao clube de fidelidade OWN Club"
+    ], 
+    link: "https://l.appbarber.com.br/ne5bpzha",
+    highlight: true
+  },
+  { 
+    name: "OWN Essencial Corte", 
+    price: "157", 
+    desc: "Esteja sempre pronto com corte de cabelo ilimitado qualquer dia.",
+    tag: "TODOS OS DIAS",
+    features: [
+      "Uso ilimitado todos os dias",
+      "Utilize quantas vezes quiser no mês",
+      "Atendimento nas 3 unidades",
+      "10% de desconto em produtos",
+      "Acesso ao clube de fidelidade OWN Club"
+    ], 
+    link: "https://l.appbarber.com.br/9m8ot9kd" 
+  },
+  { 
+    name: "OWN Essencial Barba", 
+    price: "187", 
+    desc: "Barba perfeita e alinhada todos os dias da semana.",
+    tag: "TODOS OS DIAS",
+    features: [
+      "Uso ilimitado todos os dias",
+      "Utilize quantas vezes quiser no mês",
+      "Atendimento nas 3 unidades",
+      "10% de desconto em produtos",
+      "Acesso ao clube de fidelidade OWN Club"
+    ], 
+    link: "https://l.appbarber.com.br/m2bk9u11" 
+  },
+  { 
+    name: "OWN Essencial Combo", 
+    price: "257", 
+    desc: "O máximo de liberdade e praticidade para cabelo e barba.",
+    tag: "TODOS OS DIAS",
+    features: [
+      "Uso ilimitado todos os dias",
+      "Utilize quantas vezes quiser no mês",
+      "Atendimento nas 3 unidades",
+      "10% de desconto em produtos",
+      "Acesso ao clube de fidelidade OWN Club"
+    ], 
+    link: "https://l.appbarber.com.br/80dbyigx",
+    highlight: true 
+  }
+];
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isIgOpen, setIsIgOpen] = useState(false);
@@ -77,7 +234,6 @@ export default function App() {
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
-
 
 
   // Componente de imagem que revela cor no scroll (mobile) e suaviza o carregamento
@@ -275,6 +431,7 @@ export default function App() {
         <Partnerships
           onBack={() => { window.location.hash = ""; }}
           trackEvent={trackEvent}
+          isNewCampaignActive={isNewCampaignActive}
         />
       ) : currentRoute === 'clube' ? (
         <ClubCampaign
@@ -454,109 +611,7 @@ export default function App() {
               ref={scrollContainerRef}
               className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 -mx-6 px-6 hide-scrollbar md:-mx-12 md:px-12 scroll-smooth"
             >
-              {([
-                { 
-                  name: "OWN One - Corte", 
-                  price: "47", 
-                  desc: "Ideal para quem busca praticidade com um corte mensal garantido.",
-                  tag: "MENSAL",
-                  features: [
-                    "1 corte de cabelo no mês",
-                    "Qualquer dia da semana",
-                    "Atendimento nas 3 unidades",
-                    "20% de desconto em corte adicional",
-                    "Acesso ao Clube de Fidelidade OWN Club",
-                    "10% de desconto em produtos"
-                  ], 
-                  link: "https://l.appbarber.com.br/68nufqnv" 
-                },
-                { 
-                  name: "OWN Start Corte", 
-                  price: "127", 
-                  desc: "Corte de cabelo de segunda a quinta-feira, sempre na régua.",
-                  tag: "SEG A QUI",
-                  features: [
-                    "Uso ilimitado de segunda a quinta-feira",
-                    "Vá quantas vezes quiser no mês",
-                    "Atendimento nas 3 unidades",
-                    "10% de desconto em produtos",
-                    "Acesso ao clube de fidelidade OWN Club"
-                  ], 
-                  link: "https://l.appbarber.com.br/h57o2tr1" 
-                },
-                { 
-                  name: "OWN Start Barba", 
-                  price: "157", 
-                  desc: "Barba sempre desenhada e alinhada de segunda a quinta-feira.",
-                  tag: "SEG A QUI",
-                  features: [
-                    "Uso ilimitado de segunda a quinta-feira",
-                    "Vá quantas vezes quiser no mês",
-                    "Atendimento nas 3 unidades",
-                    "10% de desconto em produtos",
-                    "Acesso ao clube de fidelidade OWN Club"
-                  ], 
-                  link: "https://l.appbarber.com.br/4dx34dqw" 
-                },
-                { 
-                  name: "OWN Start Combo", 
-                  price: "217", 
-                  desc: "Cabelo e barba completos de segunda a quinta-feira.",
-                  tag: "SEG A QUI",
-                  features: [
-                    "Uso ilimitado de segunda a quinta-feira",
-                    "Vá quantas vezes quiser no mês",
-                    "Atendimento nas 3 unidades",
-                    "10% de desconto em produtos",
-                    "Acesso ao clube de fidelidade OWN Club"
-                  ], 
-                  link: "https://l.appbarber.com.br/ne5bpzha",
-                  highlight: true
-                },
-                { 
-                  name: "OWN Essencial Corte", 
-                  price: "157", 
-                  desc: "Esteja sempre pronto com corte de cabelo ilimitado qualquer dia.",
-                  tag: "TODOS OS DIAS",
-                  features: [
-                    "Uso ilimitado todos os dias",
-                    "Utilize quantas vezes quiser no mês",
-                    "Atendimento nas 3 unidades",
-                    "10% de desconto em produtos",
-                    "Acesso ao clube de fidelidade OWN Club"
-                  ], 
-                  link: "https://l.appbarber.com.br/9m8ot9kd" 
-                },
-                { 
-                  name: "OWN Essencial Barba", 
-                  price: "187", 
-                  desc: "Barba perfeita e alinhada todos os dias da semana.",
-                  tag: "TODOS OS DIAS",
-                  features: [
-                    "Uso ilimitado todos os dias",
-                    "Utilize quantas vezes quiser no mês",
-                    "Atendimento nas 3 unidades",
-                    "10% de desconto em produtos",
-                    "Acesso ao clube de fidelidade OWN Club"
-                  ], 
-                  link: "https://l.appbarber.com.br/m2bk9u11" 
-                },
-                { 
-                  name: "OWN Essencial Combo", 
-                  price: "257", 
-                  desc: "O máximo de liberdade e praticidade para cabelo e barba.",
-                  tag: "TODOS OS DIAS",
-                  features: [
-                    "Uso ilimitado todos os dias",
-                    "Utilize quantas vezes quiser no mês",
-                    "Atendimento nas 3 unidades",
-                    "10% de desconto em produtos",
-                    "Acesso ao clube de fidelidade OWN Club"
-                  ], 
-                  link: "https://l.appbarber.com.br/80dbyigx",
-                  highlight: true 
-                },
-              ] as any[]).map((plan, idx) => (
+              {((isNewCampaignActive ? NEW_SERVICES_PLANS : OLD_SERVICES_PLANS) as any[]).map((plan, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ y: -5 }}

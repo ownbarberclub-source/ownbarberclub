@@ -41,7 +41,116 @@ interface Partner {
   plans: PartnerPlan[];
 }
 
-const PARTNERS: Partner[] = [
+const OLD_PARTNERS: Partner[] = [
+  {
+    id: "chapecoense",
+    name: "Chapecoense",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg/500px-Logo_Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol.svg.png",
+    badge: "Parceiro Oficial",
+    description: "Descontos e planos de assinatura exclusivos para sócio-torcedor adimplente da Chape.",
+    longDescription: "O estilo que entra em campo! Temos o orgulho de ser a barbearia oficial da Chapecoense. Se você é sócio do Verdão do Oeste, tem acesso a condições exclusivas nos planos de assinatura ilimitados para manter o visual sempre de campeão.",
+    theme: {
+      bg: "bg-chape",
+      text: "text-white",
+      accent: "text-white",
+      border: "border-white/20",
+      cardBg: "bg-chape",
+      cardText: "text-white",
+      cardBorder: "border-black/20",
+      cardShadow: "shadow-[20px_20px_0px_0px_rgba(0,100,55,0.2)]",
+      checkColor: "text-white",
+      btnStyle: "bg-white text-chape border-white hover:bg-black hover:text-white hover:border-black",
+      highlightCardBg: "bg-chape",
+      highlightCardText: "text-white",
+      highlightCardBorder: "border-white",
+      highlightCardShadow: "shadow-[20px_20px_0px_0px_rgba(0,100,55,0.3)]",
+      highlightCheckColor: "text-white",
+      highlightBtnStyle: "bg-white text-chape border-white hover:bg-black hover:text-white hover:border-black"
+    },
+    plans: [
+      {
+        name: "Chape Corte",
+        price: "77",
+        desc: "Sócio Chape tem vantagem exclusiva.",
+        tag: "SÓCIO CHAPE",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://l.appbarber.com.br/afd1u8yc"
+      },
+      {
+        name: "Chape Barba",
+        price: "107",
+        desc: "Sócio Chape tem vantagem exclusiva.",
+        tag: "SÓCIO CHAPE",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://l.appbarber.com.br/s1su0uyi"
+      },
+      {
+        name: "Chape Combo",
+        price: "157",
+        desc: "Sócio Chape tem vantagem exclusiva.",
+        tag: "SÓCIO CHAPE",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://l.appbarber.com.br/a710n5kg",
+        highlight: true
+      }
+    ]
+  },
+  {
+    id: "ser-aurora",
+    name: "SER Aurora",
+    logo: serAuroraLogo,
+    badge: "Parceiro Oficial",
+    description: "Descontos e planos de assinatura exclusivos para colaboradores associados à SER Aurora.",
+    longDescription: "Benefício corporativo especial para os colaboradores associados à SER Aurora. Tenha acesso a assinaturas ilimitadas de cabelo, barba ou combo para estar sempre na régua com condições exclusivas nas 3 unidades.",
+    theme: {
+      bg: "bg-[#F39C01]",
+      text: "text-black",
+      accent: "text-black",
+      border: "border-black/10",
+      cardBg: "bg-[#F39C01]",
+      cardText: "text-black",
+      cardBorder: "border-black/20",
+      cardShadow: "shadow-[20px_20px_0px_0px_rgba(243,156,1,0.2)]",
+      checkColor: "text-[#C71918]",
+      btnStyle: "bg-black text-white border-black hover:bg-white hover:text-black hover:border-black",
+      highlightCardBg: "bg-black",
+      highlightCardText: "text-[#F39C01]",
+      highlightCardBorder: "border-[#F39C01]",
+      highlightCardShadow: "shadow-[20px_20px_0px_0px_rgba(0,0,0,0.3)]",
+      highlightCheckColor: "text-[#F39C01]",
+      highlightBtnStyle: "bg-[#F39C01] text-black border-[#F39C01] hover:bg-white hover:text-black hover:border-white"
+    },
+    plans: [
+      {
+        name: "Aurora Corte",
+        price: "77",
+        desc: "Associado SER Aurora tem vantagem exclusiva.",
+        tag: "ASSOCIADO",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://l.appbarber.com.br/hh8yg4pb"
+      },
+      {
+        name: "Aurora Barba",
+        price: "107",
+        desc: "Associado SER Aurora tem vantagem exclusiva.",
+        tag: "ASSOCIADO",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://l.appbarber.com.br/hh3v2vlj"
+      },
+      {
+        name: "Aurora Combo",
+        price: "157",
+        desc: "Associado SER Aurora tem vantagem exclusiva.",
+        tag: "ASSOCIADO",
+        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
+        link: "https://l.appbarber.com.br/g3ld6kp9",
+        highlight: true
+      }
+    ]
+  }
+];
+
+const NEW_PARTNERS: Partner[] = [
   {
     id: "chapecoense",
     name: "Chapecoense",
@@ -189,9 +298,11 @@ const PARTNERS: Partner[] = [
 interface PartnershipsProps {
   onBack: () => void;
   trackEvent?: (eventName: string, params?: Record<string, any>) => void;
+  isNewCampaignActive?: boolean;
 }
 
-export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) {
+export default function Partnerships({ onBack, trackEvent, isNewCampaignActive = false }: PartnershipsProps) {
+  const partnersList = isNewCampaignActive ? NEW_PARTNERS : OLD_PARTNERS;
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPartnerId, setSelectedPartnerId] = useState<string | null>(null);
   const [shareFeedback, setShareFeedback] = useState(false);
@@ -226,7 +337,7 @@ export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) 
       const parts = hash.split("/");
       if (parts.length > 2) {
         const id = parts[2];
-        const partnerExists = PARTNERS.some(p => p.id === id);
+        const partnerExists = partnersList.some(p => p.id === id);
         if (partnerExists) {
           setSelectedPartnerId(id);
         }
@@ -238,7 +349,7 @@ export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) 
     handleHashChange(); // Executar no load
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [partnersList]);
 
   const selectPartner = (id: string | null) => {
     if (id) {
@@ -251,15 +362,15 @@ export default function Partnerships({ onBack, trackEvent }: PartnershipsProps) 
   };
 
   const filteredPartners = useMemo(() => {
-    return PARTNERS.filter(partner =>
+    return partnersList.filter(partner =>
       partner.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       partner.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [searchQuery]);
+  }, [searchQuery, partnersList]);
 
   const selectedPartner = useMemo(() => {
-    return PARTNERS.find(p => p.id === selectedPartnerId) || null;
-  }, [selectedPartnerId]);
+    return partnersList.find(p => p.id === selectedPartnerId) || null;
+  }, [selectedPartnerId, partnersList]);
 
   return (
     <div className="min-h-screen bg-black text-white font-sans pt-24 pb-32">
