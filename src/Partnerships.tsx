@@ -70,27 +70,45 @@ const PARTNERS: Partner[] = [
     plans: [
       {
         name: "Chape Corte",
-        price: "77",
+        price: "97",
         desc: "Sócio Chape tem vantagem exclusiva.",
         tag: "SÓCIO CHAPE",
-        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://l.appbarber.com.br/afd1u8yc"
+        features: [
+          "Uso ilimitado de segunda a quinta-feira",
+          "Utilize quantas vezes quiser no mês",
+          "Atendimento nas 3 unidades",
+          "10% de desconto em produtos",
+          "Acesso ao clube de fidelidade OWN Club"
+        ],
+        link: "https://l.appbarber.com.br/imfl6wp9"
       },
       {
         name: "Chape Barba",
-        price: "107",
+        price: "134",
         desc: "Sócio Chape tem vantagem exclusiva.",
         tag: "SÓCIO CHAPE",
-        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://l.appbarber.com.br/s1su0uyi"
+        features: [
+          "Uso ilimitado de segunda a quinta-feira",
+          "Utilize quantas vezes quiser no mês",
+          "Atendimento nas 3 unidades",
+          "10% de desconto em produtos",
+          "Acesso ao clube de fidelidade OWN Club"
+        ],
+        link: "https://l.appbarber.com.br/5gukxsxs"
       },
       {
         name: "Chape Combo",
-        price: "157",
+        price: "197",
         desc: "Sócio Chape tem vantagem exclusiva.",
         tag: "SÓCIO CHAPE",
-        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://l.appbarber.com.br/a710n5kg",
+        features: [
+          "Uso ilimitado de segunda a quinta-feira",
+          "Utilize quantas vezes quiser no mês",
+          "Atendimento nas 3 unidades",
+          "10% de desconto em produtos",
+          "Acesso ao clube de fidelidade OWN Club"
+        ],
+        link: "https://l.appbarber.com.br/ew81tyzf",
         highlight: true
       }
     ]
@@ -123,27 +141,45 @@ const PARTNERS: Partner[] = [
     plans: [
       {
         name: "Aurora Corte",
-        price: "77",
+        price: "97",
         desc: "Associado SER Aurora tem vantagem exclusiva.",
         tag: "ASSOCIADO",
-        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://l.appbarber.com.br/hh8yg4pb"
+        features: [
+          "Uso ilimitado de segunda a quinta-feira",
+          "Utilize quantas vezes quiser no mês",
+          "Atendimento nas 3 unidades",
+          "10% de desconto em produtos",
+          "Acesso ao clube de fidelidade OWN Club"
+        ],
+        link: "https://l.appbarber.com.br/qd70wbme"
       },
       {
         name: "Aurora Barba",
-        price: "107",
+        price: "134",
         desc: "Associado SER Aurora tem vantagem exclusiva.",
         tag: "ASSOCIADO",
-        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://l.appbarber.com.br/hh3v2vlj"
+        features: [
+          "Uso ilimitado de segunda a quinta-feira",
+          "Utilize quantas vezes quiser no mês",
+          "Atendimento nas 3 unidades",
+          "10% de desconto em produtos",
+          "Acesso ao clube de fidelidade OWN Club"
+        ],
+        link: "https://l.appbarber.com.br/l9sxvjal"
       },
       {
         name: "Aurora Combo",
-        price: "157",
+        price: "197",
         desc: "Associado SER Aurora tem vantagem exclusiva.",
         tag: "ASSOCIADO",
-        features: ["Uso ilimitado de segunda a quarta-feira", "Vá quantas vezes quiser no mês", "Atendimento nas 3 unidades", "10% OFF em produtos e tatuagens"],
-        link: "https://l.appbarber.com.br/g3ld6kp9",
+        features: [
+          "Uso ilimitado de segunda a quinta-feira",
+          "Utilize quantas vezes quiser no mês",
+          "Atendimento nas 3 unidades",
+          "10% de desconto em produtos",
+          "Acesso ao clube de fidelidade OWN Club"
+        ],
+        link: "https://l.appbarber.com.br/k1ceatak",
         highlight: true
       }
     ]
