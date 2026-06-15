@@ -4,7 +4,7 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { Scissors, User, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar, Crown, GraduationCap } from "lucide-react";
+import { Scissors, User, Users, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar, Crown, GraduationCap } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
@@ -321,32 +321,32 @@ export default function App() {
   };
 
   const services = [
+    { name: "Assinantes - Corte", price: "50,00", icon: Crown },
+    { name: "Assinantes - Barba", price: "45,00", icon: Crown },
+    { name: "Assinantes - Corte + Barba", price: "90,00", icon: Crown },
+    { name: "Assinantes - Corte - Pai e Filho", price: "95,00", icon: Users },
     { name: "Acabamento", price: "20,00", icon: Scissors },
     { name: "Adicional Freestyle", price: "15,00", icon: Paintbrush },
     { name: "Alisamento Americano", price: "80,00", icon: Zap },
-    { name: "Argila", price: "60,00", icon: Droplets },
-    { name: "Barba", price: "55,00", icon: User },
+    { name: "Argila", price: "50,00", icon: Droplets },
+    { name: "Barba", price: "45,00", icon: User },
     { name: "Camuflagem", price: "60,00", icon: Paintbrush },
-    { name: "Cone Hindu", price: "45,00", icon: Flame },
-    { name: "Corte", price: "60,00", icon: Scissors },
-    { name: "Corte + Barba", price: "100,00", icon: Scissors },
-
+    { name: "Cone Hindu", price: "40,00", icon: Flame },
+    { name: "Corte", price: "50,00", icon: Scissors },
+    { name: "Corte + Barba", price: "90,00", icon: Scissors },
     { name: "Depilação na Cera - Nariz ou Orelha", price: "20,00", icon: Flame },
-    { name: "Freestyle (corte com desenho)", price: "75,00", icon: Paintbrush },
+    { name: "Freestyle (corte com desenho)", price: "65,00", icon: Paintbrush },
     { name: "Hidratação", price: "40,00", icon: Droplets },
-    { name: "Limpeza de Pele", price: "40,00", icon: Sparkles },
-    { name: "Luzes", price: "200,00", icon: Zap },
-    { name: "Matização", price: "20,00", icon: Paintbrush },
-    { name: "Pigmentação", price: "60,00", icon: Paintbrush },
-    { name: "Platinado", price: "250,00", icon: Sparkles },
+    { name: "Limpeza de Pele", price: "35,00", icon: Sparkles },
+    { name: "Luzes", price: "150,00", icon: Zap },
+    { name: "Matização", price: "25,00", icon: Paintbrush },
+    { name: "Pigmentação", price: "50,00", icon: Paintbrush },
+    { name: "Platinado", price: "200,00", icon: Sparkles },
     { name: "Raspar", price: "45,00", icon: Scissors },
-    { name: "Selagem", price: "120,00", icon: Check },
-    { name: "Sobrancelha", price: "20,00", icon: Check },
-    { name: "Sobrancelha com Cera", price: "30,00", icon: Flame },
+    { name: "Selagem", price: "100,00", icon: Check },
+    { name: "Sobrancelha", price: "15,00", icon: Check },
+    { name: "Sobrancelha com Cera", price: "25,00", icon: Flame },
     { name: "Tonalizante", price: "60,00", icon: Paintbrush },
-    { name: "VIP - Barba", price: "150,00", icon: Crown },
-    { name: "VIP - Corte", price: "110,00", icon: Crown },
-    { name: "VIP - Corte + Barba", price: "220,00", icon: Crown },
   ];
 
   return (
