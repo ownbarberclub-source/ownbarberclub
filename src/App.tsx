@@ -321,10 +321,6 @@ export default function App() {
   };
 
   const services = [
-    { name: "Assinantes - Corte", price: "50,00", icon: Crown },
-    { name: "Assinantes - Barba", price: "45,00", icon: Crown },
-    { name: "Assinantes - Corte + Barba", price: "90,00", icon: Crown },
-    { name: "Assinantes - Corte - Pai e Filho", price: "95,00", icon: Users },
     { name: "Acabamento", price: "20,00", icon: Scissors },
     { name: "Adicional Freestyle", price: "15,00", icon: Paintbrush },
     { name: "Alisamento Americano", price: "80,00", icon: Zap },
