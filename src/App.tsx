@@ -216,6 +216,15 @@ export default function App() {
     return new Date() >= new Date("2026-06-15T00:00:00-03:00");
   }, []);
 
+  const isClubActive = useMemo(() => {
+    // Para forçar a ativação do clube localmente, use ?testClub=true na URL
+    if (typeof window !== 'undefined' && window.location.search.includes('testClub=true')) {
+      return true;
+    }
+    // Mantém como false por padrão ("EM BREVE")
+    return false;
+  }, []);
+
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -223,8 +232,12 @@ export default function App() {
         setCurrentRoute('parcerias');
         window.scrollTo(0, 0);
       } else if (hash.startsWith("#/clube")) {
-        setCurrentRoute('clube');
-        window.scrollTo(0, 0);
+        if (isClubActive) {
+          setCurrentRoute('clube');
+          window.scrollTo(0, 0);
+        } else {
+          window.location.hash = "";
+        }
       } else {
         setCurrentRoute('home');
       }
@@ -233,7 +246,7 @@ export default function App() {
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [isClubActive]);
 
 
   // Componente de imagem que revela cor no scroll (mobile) e suaviza o carregamento
@@ -479,7 +492,7 @@ export default function App() {
                 <p className="text-xl md:text-3xl font-display uppercase tracking-widest max-w-sm text-left md:text-right border-l-4 md:border-l-0 md:border-r-4 border-brand pl-4 md:pl-0 md:pr-4 py-2 bg-black/40 backdrop-blur-md">
                   Entre para o nosso <span className="text-brand">clube de fidelidade</span>
                 </p>
-                {isNewCampaignActive ? (
+                {isClubActive ? (
                   <a 
                     href="#/clube"
                     onClick={() => trackEvent('click_entrar_clube', { location: 'hero' })}
@@ -488,8 +501,7 @@ export default function App() {
                     ENTRAR PARA O CLUBE
                   </a>
                 ) : (
-                  <button className="bg-brand text-black px-8 py-4 font-mono text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] flex flex-col items-center">
-                    <span className="text-[10px] md:text-xs font-sans tracking-widest opacity-80 mb-1">Acesso Liberado Em:</span>
+                  <button className="bg-brand text-black px-8 py-4 font-display text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] cursor-not-allowed opacity-80 flex flex-col items-center">
                     EM BREVE
                   </button>
                 )}
