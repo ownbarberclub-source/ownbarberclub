@@ -25,7 +25,7 @@ import efipiKaique from "./assets/efapi-kaique.jpg";
 import efipiCadu from "./assets/efapi-cadu.jpg";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpeg";
-import galeria3 from "./assets/galeria-03.JPG";
+import galeria3 from "./assets/galeria-03.jpg";
 import galeria4 from "./assets/galeria-04.jpg";
 import galeria5 from "./assets/galeria-05.jpg";
 import galeria6 from "./assets/galeria-06.JPG";
