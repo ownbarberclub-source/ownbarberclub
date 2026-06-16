@@ -12,17 +12,17 @@ import Partnerships from "./Partnerships";
 import ClubCampaign from "./ClubCampaign";
 import clube from "./assets/clube.JPG";
 // Equipe Centro
-import centroJohn from "./assets/equipe-john.JPG";
-import centroVitinho from "./assets/equipe-vitor.JPG";
-import centroJulio from "./assets/equipe-julio.JPG";
+import centroJohn from "./assets/centro-john.jpg";
+import centroVitinho from "./assets/centro-vitor.jpg";
+import centroJulio from "./assets/centro-julio.jpg";
 // Equipe Avenida
 import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
 import avenidaNasser from "./assets/avenida-nasser.jpg";
 // Equipe Efapi
-import efipiEduardo from "./assets/efapi-eduardo.jpeg";
+import efipiEduardo from "./assets/efapi-eduardo.jpg";
 import efipiTiago from "./assets/efapi-tiago.jpg";
-import efipiKaique from "./assets/efapi-kaique.jpeg";
-import efipiCadu from "./assets/efapi-cadu.JPG";
+import efipiKaique from "./assets/efapi-kaique.jpg";
+import efipiCadu from "./assets/efapi-cadu.jpg";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpeg";
 import galeria3 from "./assets/galeria-03.JPG";
