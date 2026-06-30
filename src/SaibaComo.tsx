@@ -74,10 +74,14 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
           modestbranding: 1,   // Minimiza logo do YouTube
           rel: 0,              // Não mostra vídeos recomendados
           showinfo: 0,
-          iv_load_policy: 3
+          iv_load_policy: 3,
+          cc_load_policy: 3    // Força legendas desativadas por padrão
         },
         events: {
           onReady: (event: any) => {
+            if (typeof event.target.setPlaybackQuality === 'function') {
+              event.target.setPlaybackQuality('hd1080'); // Sugere qualidade HD
+            }
             event.target.playVideo();
           },
           onStateChange: (event: any) => {
