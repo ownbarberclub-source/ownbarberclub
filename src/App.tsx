@@ -21,7 +21,6 @@ import avenidaHernaldo from "./assets/avenida-hernaldo.png";
 import avenidaNasser from "./assets/avenida-nasser.png";
 // Equipe Efapi
 import efipiEduardo from "./assets/efapi-eduardo.png";
-import efipiTiago from "./assets/efapi-tiago.png";
 import efipiKaique from "./assets/efapi-kaique.png";
 import efipiCadu from "./assets/efapi-cadu.png";
 import galeria1 from "./assets/galeria-01.jpg";
@@ -818,7 +817,6 @@ export default function App() {
                 unit: "Box Efapi",
                 barbers: [
                   { name: "Eduardo", role: "Chefe dos Box", img: efipiEduardo },
-                  { name: "Tiago", role: "Mecânico Geral", img: efipiTiago },
                   { name: "Kaique", role: "Engenheiro de Performance", img: efipiKaique },
                   { name: "Cadu", role: "Técnico de Setup", img: efipiCadu },
                 ]
