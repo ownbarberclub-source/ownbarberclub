@@ -128,7 +128,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans pt-24 pb-32 selection:bg-brand selection:text-black">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         
         {/* Breadcrumb / Botão Voltar */}
         <div className="mb-12">
