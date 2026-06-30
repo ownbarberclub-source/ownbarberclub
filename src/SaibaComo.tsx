@@ -15,7 +15,7 @@ interface SaibaComoProps {
 }
 
 export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
-  const [linksReleased, setLinksReleased] = useState(false);
+  const [linksReleased, setLinksReleased] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const playerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
@@ -146,7 +146,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
             SAIBA <span className="text-brand">COMO.</span>
           </h1>
           <p className="text-base md:text-lg font-light text-white/70 leading-relaxed">
-            Assista ao vídeo explicativo abaixo para entender detalhadamente o regulamento da nossa promoção. Os links de download estarão disponíveis assim que o vídeo terminar.
+            Assista ao vídeo explicativo abaixo para entender detalhadamente o regulamento da nossa promoção. Os links para download já estão disponíveis logo abaixo.
           </p>
         </div>
 
