@@ -131,7 +131,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Breadcrumb / Botão Voltar */}
-        <div className="mb-12">
+        <div className="mb-6 md:mb-12">
           <button
             onClick={onBack}
             className="group flex items-center gap-3 text-xs uppercase font-mono tracking-widest text-white/50 hover:text-brand transition-colors cursor-pointer"
@@ -142,7 +142,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
         </div>
 
         {/* Cabeçalho */}
-        <div className="text-center md:text-left mb-12 relative overflow-hidden bg-gradient-to-r from-zinc-950 to-black p-8 md:p-12 border-4 border-white/10 shadow-[20px_20px_0px_0px_rgba(225,6,0,0.1)]">
+        <div className="text-center md:text-left mb-6 md:mb-12 relative overflow-hidden bg-gradient-to-r from-zinc-950 to-black p-6 md:p-12 border-4 border-white/10 shadow-[8px_8px_0px_0px_rgba(225,6,0,0.15)] md:shadow-[20px_20px_0px_0px_rgba(225,6,0,0.1)]">
           <span className="inline-block px-3 py-1 bg-brand text-black font-mono text-xs tracking-widest uppercase mb-4 font-bold">
             Promoção Ativa
           </span>
@@ -156,7 +156,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
 
         {/* Container do Vídeo */}
         <div 
-          className="mb-6 border-4 border-white/10 bg-zinc-950 p-2 shadow-[20px_20px_0px_0px_rgba(255,255,255,0.03)] hover:border-brand/40 transition-colors relative group"
+          className="mb-6 border-4 border-white/10 bg-zinc-950 p-2 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.03)] md:shadow-[20px_20px_0px_0px_rgba(255,255,255,0.03)] hover:border-brand/40 transition-colors relative group"
         >
           {/* Overlay transparente para bloquear cliques e atalhos na iframe, mas permitir play/pause customizado */}
           <div className="absolute inset-0 z-10 cursor-pointer" onClick={togglePlay} />
@@ -169,9 +169,9 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                className="absolute inset-0 m-auto w-20 h-20 bg-brand text-black rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(225,6,0,0.6)] hover:scale-110 transition-transform z-20 cursor-pointer"
+                className="absolute inset-0 m-auto w-16 h-16 md:w-20 md:h-20 bg-brand text-black rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(225,6,0,0.6)] hover:scale-110 transition-transform z-20 cursor-pointer"
               >
-                <Play size={36} className="fill-black ml-1" />
+                <Play className="fill-black ml-0.5 md:ml-1 w-7 h-7 md:w-9 md:h-9" />
               </motion.button>
             )}
           </AnimatePresence>
@@ -204,7 +204,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center bg-zinc-950 border-2 border-white/10 p-8 md:p-12 relative overflow-hidden"
+              className="text-center bg-zinc-950 border-2 border-white/10 p-6 md:p-12 relative overflow-hidden"
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand text-black px-4 py-1 font-mono text-xs uppercase tracking-wider font-bold animate-pulse">
                 Links Liberados!
