@@ -10,6 +10,7 @@ import Logo from "./assets/logo.png";
 import fachada from "./assets/fachada.jpg";
 import Partnerships from "./Partnerships";
 import ClubCampaign from "./ClubCampaign";
+import SaibaComo from "./SaibaComo";
 import clube from "./assets/clube.JPG";
 // Equipe Centro
 import centroJohn from "./assets/centro-john.png";
@@ -205,7 +206,7 @@ export default function App() {
   const [isIgOpen, setIsIgOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias' | 'clube'>('home');
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'parcerias' | 'clube' | 'saiba-como'>('home');
 
   const isNewCampaignActive = useMemo(() => {
     // Permite forçar a visualização do clube via parâmetro na URL para testes locais (?testClub=true)
@@ -237,6 +238,9 @@ export default function App() {
         } else {
           window.location.hash = "";
         }
+      } else if (hash.startsWith("#/saiba-como")) {
+        setCurrentRoute('saiba-como');
+        window.scrollTo(0, 0);
       } else {
         setCurrentRoute('home');
       }
@@ -446,6 +450,11 @@ export default function App() {
           onBack={() => { window.location.hash = ""; }}
           trackEvent={trackEvent}
         />
+      ) : currentRoute === 'saiba-como' ? (
+        <SaibaComo
+          onBack={() => { window.location.hash = ""; }}
+          trackEvent={trackEvent}
+        />
       ) : (
         <>
           {/* Hero Section */}
@@ -496,11 +505,13 @@ export default function App() {
                     ENTRAR PARA O CLUBE
                   </a>
                 ) : (
-                  <div 
-                    className="bg-zinc-800/80 border-4 border-zinc-700/80 text-zinc-500 px-8 py-4 font-display text-xl md:text-3xl font-black uppercase tracking-widest text-center select-none shadow-[6px_6px_0px_0px_rgba(63,63,70,0.5)] cursor-not-allowed"
+                  <a 
+                    href="#/saiba-como"
+                    onClick={() => trackEvent('click_saiba_como', { location: 'hero' })}
+                    className="bg-brand text-black px-8 py-4 font-display text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] text-center cursor-pointer"
                   >
-                    EM BREVE
-                  </div>
+                    SAIBA COMO
+                  </a>
                 )}
               </div>
             </motion.div>
