@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowLeft, Play } from "lucide-react";
+import { ArrowLeft, Play, Subtitles } from "lucide-react";
 
 declare global {
   interface Window {
@@ -17,6 +17,7 @@ interface SaibaComoProps {
 export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
   const [linksReleased, setLinksReleased] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [captionsEnabled, setCaptionsEnabled] = useState(false);
   const playerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
 
@@ -82,6 +83,14 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
             if (typeof event.target.setPlaybackQuality === 'function') {
               event.target.setPlaybackQuality('hd1080'); // Sugere qualidade HD
             }
+            // Tenta forçar desativação no carregamento inicial
+            if (typeof event.target.unloadModule === 'function') {
+              try {
+                event.target.unloadModule("captions");
+              } catch (e) {
+                console.log("Legendas já desativadas ou módulo indisponível");
+              }
+            }
             event.target.playVideo();
           },
           onStateChange: (event: any) => {
@@ -116,6 +125,27 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
       }
     };
   }, []);
+
+  const toggleCaptions = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Evita pausar/dar play no vídeo
+    if (!playerRef.current) return;
+
+    try {
+      if (captionsEnabled) {
+        if (typeof playerRef.current.unloadModule === 'function') {
+          playerRef.current.unloadModule("captions");
+        }
+        setCaptionsEnabled(false);
+      } else {
+        if (typeof playerRef.current.loadModule === 'function') {
+          playerRef.current.loadModule("captions");
+        }
+        setCaptionsEnabled(true);
+      }
+    } catch (err) {
+      console.error("Erro ao alternar legendas:", err);
+    }
+  };
 
   const togglePlay = () => {
     if (!playerRef.current) return;
@@ -160,6 +190,20 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
         >
           {/* Overlay transparente para bloquear cliques e atalhos na iframe, mas permitir play/pause customizado */}
           <div className="absolute inset-0 z-10 cursor-pointer" onClick={togglePlay} />
+
+          {/* Botão de Legendas */}
+          <button
+            onClick={toggleCaptions}
+            className={`absolute bottom-4 right-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-mono border transition-all cursor-pointer shadow-lg ${
+              captionsEnabled 
+                ? 'bg-brand text-black border-brand/50 font-bold' 
+                : 'bg-black/80 text-white/80 border-white/20 hover:border-white hover:text-white'
+            }`}
+            title="Ativar/Desativar Legendas"
+          >
+            <Subtitles className="w-4 h-4" />
+            <span>LEGENDA: {captionsEnabled ? "LIGADA" : "DESLIGADA"}</span>
+          </button>
 
           {/* Botão Central de Play (quando pausado) */}
           <AnimatePresence>
