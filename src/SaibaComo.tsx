@@ -76,22 +76,28 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
           rel: 0,              // Não mostra vídeos recomendados
           showinfo: 0,
           iv_load_policy: 3,
-          cc_load_policy: 3    // Força legendas desativadas por padrão
+          cc_load_policy: 3,   // Força legendas desativadas por padrão
+          enablejsapi: 1,      // Permite o controle por API em navegadores rígidos
+          origin: typeof window !== 'undefined' ? window.location.origin : '' // Necessário para WebViews/navegadores de apps
         },
         events: {
           onReady: (event: any) => {
-            if (typeof event.target.setPlaybackQuality === 'function') {
-              event.target.setPlaybackQuality('hd1080'); // Sugere qualidade HD
-            }
-            // Tenta forçar desativação no carregamento inicial
-            if (typeof event.target.unloadModule === 'function') {
-              try {
-                event.target.unloadModule("captions");
-              } catch (e) {
-                console.log("Legendas já desativadas ou módulo indisponível");
+            try {
+              if (typeof event.target.setPlaybackQuality === 'function') {
+                event.target.setPlaybackQuality('hd1080'); // Sugere qualidade HD
               }
+              // Tenta forçar desativação no carregamento inicial
+              if (typeof event.target.unloadModule === 'function') {
+                try {
+                  event.target.unloadModule("captions");
+                } catch (e) {
+                  console.log("Legendas já desativadas ou módulo indisponível");
+                }
+              }
+              event.target.playVideo();
+            } catch (err) {
+              console.error("Erro ao inicializar vídeo no onReady:", err);
             }
-            event.target.playVideo();
           },
           onStateChange: (event: any) => {
             // YT.PlayerState: 1 = PLAYING, 2 = PAUSED, 0 = ENDED (Finalizado)
