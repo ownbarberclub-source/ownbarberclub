@@ -204,7 +204,7 @@ export default function SaibaComo({ onBack, trackEvent }: SaibaComoProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center bg-zinc-950 border-2 border-white/10 p-6 md:p-12 relative overflow-hidden"
+              className="text-center bg-zinc-950 border-2 border-white/10 p-6 md:p-12 relative"
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand text-black px-4 py-1 font-mono text-xs uppercase tracking-wider font-bold animate-pulse">
                 Links Liberados!

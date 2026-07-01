@@ -354,7 +354,7 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={Logo} alt="Own Barber Club" className="w-16 h-16 object-contain brightness-0 invert" />
+            <img src={Logo} alt="Own Barber Club" className="w-16 h-16 object-contain" />
             <span className="font-display text-3xl tracking-tighter">OWN <span className="text-brand">BARBER</span> CLUB</span>
           </div>
 
