@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { Scissors, User, Users, MapPin, Phone, Instagram, Check, Menu, X, Zap, Droplets, Sparkles, Paintbrush, Flame, Skull, PenTool as Piercing, ShieldCheck, ChevronLeft, ChevronRight, Star, Quote, Calendar, Crown, GraduationCap } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Logo from "./assets/logo.png";
-import fachada from "./assets/fachada.jpg";
+import heroBg from "./assets/hero-bg.png";
 import Partnerships from "./Partnerships";
 import ClubCampaign from "./ClubCampaign";
 import SaibaComo from "./SaibaComo";
-import clube from "./assets/clube.JPG";
+import clube from "./assets/clube-img.png";
 // Equipe Centro
 import centroJohn from "./assets/centro-john.png";
 import centroVitinho from "./assets/centro-vitinho.png";
@@ -457,81 +457,131 @@ export default function App() {
         />
       ) : (
         <>
-          {/* Hero Section */}
-          <section className="relative h-screen flex items-center justify-center pt-20">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={fachada}
-            alt="Barbearia Own"
-            className="w-full h-full object-cover opacity-50 grayscale"
-            referrerPolicy="no-referrer"
-            loading="eager"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-        </div>
+          {/* Hero Section — Responsivo Mobile/Desktop */}
+          <section className="relative w-full overflow-hidden bg-black">
 
-        <div className="relative z-10 w-full px-6">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col md:flex-row md:items-end justify-between gap-10"
-            >
-              <div>
-                <h1 className="text-[15vw] md:text-[12vw] leading-[0.8] mb-4">
-                  OWN <br />
-                  BARBER <br />
-                  <span className="text-brand">CLUB.</span>
-                </h1>
-                <div className="flex flex-wrap gap-4 mt-8">
-                  <span className="px-4 py-2 bg-white text-black font-bold uppercase text-xs tracking-widest">Estilo</span>
-                  <span className="px-4 py-2 bg-brand text-black font-bold uppercase text-xs tracking-widest">Atitude</span>
-                  <span className="px-4 py-2 border border-white text-white font-bold uppercase text-xs tracking-widest">Exclusividade</span>
-                </div>
+            {/* ── MOBILE: tela cheia com cover ── */}
+            <div className="lg:hidden relative min-h-screen flex flex-col justify-end pt-20">
+              {/* Imagem de fundo cobrindo toda a tela no mobile */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={heroBg}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-full object-cover object-center"
+                  loading="eager"
+                />
               </div>
-
-              <div className="flex flex-col items-start md:items-end gap-4 mb-4 md:mb-12">
-                <p className="text-xl md:text-3xl font-display uppercase tracking-widest max-w-sm text-left md:text-right border-l-4 md:border-l-0 md:border-r-4 border-brand pl-4 md:pl-0 md:pr-4 py-2 bg-black/40 backdrop-blur-md">
-                  Entre para o nosso <span className="text-brand">clube de fidelidade</span>
-                </p>
+              {/* Gradiente cobrindo parte inferior para legibilidade do texto */}
+              <div className="absolute inset-0 z-10 pointer-events-none"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 100%)" }}
+              />
+              {/* Linha vermelha abaixo da nav */}
+              <div className="absolute top-20 left-0 right-0 h-[3px] bg-brand z-20" />
+              {/* Texto */}
+              <motion.div
+                className="relative z-20 px-6 pb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.3 }}
+              >
+                <h1 className="text-[16vw] leading-[0.82] mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+                  OWN <br />BARBER <br /><span className="text-brand">CLUB.</span>
+                </h1>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 bg-white text-black font-bold uppercase text-[10px] tracking-widest">Estilo</span>
+                  <span className="px-3 py-1 bg-brand text-black font-bold uppercase text-[10px] tracking-widest">Atitude</span>
+                  <span className="px-3 py-1 border border-white/60 text-white font-bold uppercase text-[10px] tracking-widest">Exclusividade</span>
+                </div>
+                 <p className="text-base sm:text-lg font-display uppercase tracking-widest border-l-4 border-brand pl-3 py-1 mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                   Entre para o Clube da OWN e conquiste um Jetta GLI
+                 </p>
                 {isClubActive ? (
-                  <a 
-                    href="#/clube"
-                    onClick={() => trackEvent('click_entrar_clube', { location: 'hero' })}
-                    className="bg-brand text-black px-8 py-4 font-display text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] text-center cursor-pointer"
-                  >
+                  <a href="#/clube" onClick={() => trackEvent('click_entrar_clube', { location: 'hero' })}
+                    className="inline-block bg-brand text-black px-6 py-3 font-display text-base font-black uppercase shadow-[4px_4px_0px_0px_rgba(225,6,0,0.5)] cursor-pointer">
                     ENTRAR PARA O CLUBE
                   </a>
                 ) : (
-                  <a 
-                    href="#/saiba-como"
-                    onClick={() => trackEvent('click_saiba_como', { location: 'hero' })}
-                    className="bg-brand text-black px-8 py-4 font-display text-xl md:text-3xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] text-center cursor-pointer"
-                  >
+                  <a href="#/saiba-como" onClick={() => trackEvent('click_saiba_como', { location: 'hero' })}
+                    className="inline-block bg-brand text-black px-6 py-3 font-display text-base font-black uppercase shadow-[4px_4px_0px_0px_rgba(225,6,0,0.5)] cursor-pointer">
                     SAIBA COMO
                   </a>
                 )}
-              </div>
-            </motion.div>
-          </div>
-        </div>
+              </motion.div>
+            </div>
 
-        {/* Marquee */}
-        <div className="absolute bottom-0 left-0 right-0 bg-brand py-4 overflow-hidden border-t-4 border-black">
-          <div className="animate-marquee flex gap-20">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex gap-20 items-center">
-                <span className="text-black font-display text-4xl uppercase tracking-tighter">Own Barber Club</span>
-                <Scissors className="text-black" />
-                <span className="text-black font-display text-4xl uppercase tracking-tighter">Chapecó - SC</span>
-                <Zap className="text-black" />
+            {/* ── DESKTOP: imagem natural 100% largura, zero corte ── */}
+            <div className="hidden lg:block pt-20">
+              {/* Blur de fundo para preencher espaço do pt-20 */}
+              <div className="absolute inset-0 z-0">
+                <img src={heroBg} alt="" aria-hidden="true"
+                  className="w-full h-full object-cover scale-110"
+                  style={{ filter: "blur(32px) brightness(0.25) saturate(1.2)" }}
+                  loading="eager"
+                />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              {/* Imagem principal sem corte */}
+              <motion.div className="relative z-10 w-full"
+                initial={{ scale: 1.03, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.4, ease: "easeOut" }}
+              >
+                <img src={heroBg} alt="Barbearia Own"
+                  className="w-full h-auto block"
+                  loading="eager" decoding="async"
+                />
+              </motion.div>
+              {/* Gradientes de fusão */}
+              <div className="absolute bottom-0 left-0 right-0 h-2/5 z-20 pointer-events-none"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 100%)" }} />
+              <div className="absolute top-0 left-0 right-0 h-40 z-20 pointer-events-none"
+                style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%)" }} />
+              {/* Linha vermelha */}
+              <div className="absolute top-20 left-0 right-0 h-[3px] bg-brand z-30" />
+              {/* Texto */}
+              <div className="absolute bottom-20 left-0 z-30 px-12 lg:px-16 w-full lg:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.4 }}>
+                  <h1 className="text-[7vw] leading-[0.82] mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+                    OWN <br />BARBER <br /><span className="text-brand">CLUB.</span>
+                  </h1>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    <span className="px-3 py-1 bg-white text-black font-bold uppercase text-[10px] tracking-widest">Estilo</span>
+                    <span className="px-3 py-1 bg-brand text-black font-bold uppercase text-[10px] tracking-widest">Atitude</span>
+                    <span className="px-3 py-1 border border-white/60 text-white font-bold uppercase text-[10px] tracking-widest backdrop-blur-sm">Exclusividade</span>
+                  </div>
+                  <p className="text-xl lg:text-2xl font-display uppercase tracking-widest border-l-4 border-brand pl-4 py-1 mb-5 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+                    Entre para o Clube da OWN e conquiste um Jetta GLI
+                  </p>
+                  {isClubActive ? (
+                    <a href="#/clube" onClick={() => trackEvent('click_entrar_clube', { location: 'hero' })}
+                      className="inline-block bg-brand text-black px-8 py-4 font-display text-2xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] cursor-pointer">
+                      ENTRAR PARA O CLUBE
+                    </a>
+                  ) : (
+                    <a href="#/saiba-como" onClick={() => trackEvent('click_saiba_como', { location: 'hero' })}
+                      className="inline-block bg-brand text-black px-8 py-4 font-display text-2xl font-black uppercase hover:bg-white hover:scale-105 transition-all shadow-[6px_6px_0px_0px_rgba(225,6,0,0.5)] cursor-pointer">
+                      SAIBA COMO
+                    </a>
+                  )}
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Marquee — aparece nos dois */}
+            <div className="relative z-30 bg-brand py-4 overflow-hidden border-t-4 border-black">
+              <div className="animate-marquee flex gap-20">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="flex gap-20 items-center">
+                    <span className="text-black font-display text-4xl uppercase tracking-tighter">Own Barber Club</span>
+                    <Scissors className="text-black" />
+                    <span className="text-black font-display text-4xl uppercase tracking-tighter">Chapecó - SC</span>
+                    <Zap className="text-black" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
       {/* Chapecoense Partnership Section */}
       <section className="py-24 bg-chape relative overflow-hidden">
