@@ -13,16 +13,19 @@ import ClubCampaign from "./ClubCampaign";
 import SaibaComo from "./SaibaComo";
 import clube from "./assets/clube-img.png";
 // Equipe Centro
-import centroJohn from "./assets/centro-john.png";
-import centroVitinho from "./assets/centro-vitinho.png";
-import centroJulio from "./assets/centro-julio.png";
+import centroJohn from "./assets/centro-john.jpg";
+import centroVitinho from "./assets/centro-vitinho.jpg";
+import centroJulio from "./assets/centro-julio.jpg";
 // Equipe Avenida
-import avenidaHernaldo from "./assets/avenida-hernaldo.png";
-import avenidaNasser from "./assets/avenida-nasser.png";
+import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
+import avenidaNasser from "./assets/avenida-nasser.jpg";
 // Equipe Efapi
-import efipiEduardo from "./assets/efapi-eduardo.png";
-import efipiKaique from "./assets/efapi-kaique.png";
-import efipiCadu from "./assets/efapi-cadu.png";
+import efipiEduardo from "./assets/efapi-eduardo.jpg";
+import efipiKaique from "./assets/efapi-kaique.jpg";
+import efipiCadu from "./assets/efapi-cadu.jpg";
+import efipiBruno from "./assets/efapi-bruno.jpg";
+import efipiLucas from "./assets/efapi-lucas.jpg";
+import efipiYan from "./assets/efapi-yan.jpg";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpeg";
 import galeria3 from "./assets/galeria-03.jpg";
@@ -851,24 +854,27 @@ export default function App() {
               {
                 unit: "Box Centro",
                 barbers: [
-                  { name: "John", role: "Chefe dos Box", img: centroJohn },
-                  { name: "Vitinho", role: "Analista de Telemetria", img: centroVitinho },
-                  { name: "Julio", role: "Engenheiro de Pista", img: centroJulio },
+                  { name: "John", role: "Gerente de Unidade", img: centroJohn },
+                  { name: "Vitinho", role: "Barbeiro", img: centroVitinho },
+                  { name: "Julio", role: "Barbeiro", img: centroJulio },
                 ]
               },
               {
                 unit: "Box Avenida",
                 barbers: [
-                  { name: "Nasser", role: "Chefe dos Box", img: avenidaNasser },
-                  { name: "Hernaldo", role: "Diretor de Estratégia", img: avenidaHernaldo },
+                  { name: "Nasser", role: "Gerente de Unidade", img: avenidaNasser },
+                  { name: "Hernaldo", role: "Barbeiro", img: avenidaHernaldo },
                 ]
               },
               {
                 unit: "Box Efapi",
                 barbers: [
-                  { name: "Eduardo", role: "Chefe dos Box", img: efipiEduardo },
-                  { name: "Kaique", role: "Engenheiro de Performance", img: efipiKaique },
-                  { name: "Cadu", role: "Técnico de Setup", img: efipiCadu },
+                  { name: "Eduardo", role: "Gerente de Unidade", img: efipiEduardo },
+                  { name: "Kaique", role: "Barbeiro", img: efipiKaique },
+                  { name: "Cadu", role: "Barbeiro", img: efipiCadu },
+                  { name: "Bruno", role: "Barbeiro", img: efipiBruno },
+                  { name: "Lucas", role: "Barbeiro", img: efipiLucas },
+                  { name: "Yan", role: "Barbeiro", img: efipiYan },
                 ]
               }
             ].map((group, gIdx) => (
