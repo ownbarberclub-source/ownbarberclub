@@ -19,13 +19,13 @@ import centroJulio from "./assets/centro-julio.jpg";
 // Equipe Avenida
 import avenidaHernaldo from "./assets/avenida-hernaldo.jpg";
 import avenidaNasser from "./assets/avenida-nasser.jpg";
+import avenidaBruno from "./assets/avenida-bruno.jpg";
 // Equipe Efapi
 import efipiEduardo from "./assets/efapi-eduardo.jpg";
 import efipiKaique from "./assets/efapi-kaique.jpg";
 import efipiCadu from "./assets/efapi-cadu.jpg";
 import efipiBruno from "./assets/efapi-bruno.jpg";
 import efipiLucas from "./assets/efapi-lucas.jpg";
-import efipiYan from "./assets/efapi-yan.jpg";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpeg";
 import galeria3 from "./assets/galeria-03.jpg";
@@ -855,7 +855,6 @@ export default function App() {
                 unit: "Box Centro",
                 barbers: [
                   { name: "John", role: "Gerente de Unidade", img: centroJohn },
-                  { name: "Vitinho", role: "Barbeiro", img: centroVitinho },
                   { name: "Julio", role: "Barbeiro", img: centroJulio },
                 ]
               },
@@ -864,6 +863,8 @@ export default function App() {
                 barbers: [
                   { name: "Nasser", role: "Gerente de Unidade", img: avenidaNasser },
                   { name: "Hernaldo", role: "Barbeiro", img: avenidaHernaldo },
+                  { name: "Vitinho", role: "Barbeiro", img: centroVitinho },
+                  { name: "Bruno", role: "Barbeiro", img: avenidaBruno },
                 ]
               },
               {
@@ -874,7 +875,6 @@ export default function App() {
                   { name: "Cadu", role: "Barbeiro", img: efipiCadu },
                   { name: "Bruno", role: "Barbeiro", img: efipiBruno },
                   { name: "Lucas", role: "Barbeiro", img: efipiLucas },
-                  { name: "Yan", role: "Barbeiro", img: efipiYan },
                 ]
               }
             ].map((group, gIdx) => (
