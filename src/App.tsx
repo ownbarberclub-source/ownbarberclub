@@ -8,6 +8,7 @@ import { Scissors, User, Users, MapPin, Phone, Instagram, Check, Menu, X, Zap, D
 import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Logo from "./assets/logo.png";
 import heroBg from "./assets/hero-bg.png";
+import heroBgMobile from "./assets/hero-bg-mobile.png";
 import Partnerships from "./Partnerships";
 import ClubCampaign from "./ClubCampaign";
 import SaibaComo from "./SaibaComo";
@@ -463,21 +464,22 @@ export default function App() {
           {/* Hero Section — Responsivo Mobile/Desktop */}
           <section className="relative w-full overflow-hidden bg-black">
 
-            {/* ── MOBILE: tela cheia com cover ── */}
-            <div className="lg:hidden relative min-h-screen flex flex-col justify-end pt-20">
-              {/* Imagem de fundo cobrindo toda a tela no mobile */}
+            {/* ── MOBILE: tela cheia com marquise visível ── */}
+            <div className="lg:hidden relative min-h-[90vh] flex flex-col justify-end pt-20">
+              {/* Imagem de fundo cobrindo com foco no topo para não cortar a marquise */}
               <div className="absolute inset-0 z-0">
                 <img
-                  src={heroBg}
+                  src={heroBgMobile}
                   alt="Own Barber Club"
                   aria-hidden="true"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-top"
                   loading="eager"
                 />
               </div>
               {/* Gradiente cobrindo parte inferior para legibilidade do texto */}
-              <div className="absolute inset-0 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 100%)" }}
+              <div
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%)" }}
               />
               {/* Linha vermelha abaixo da nav */}
               <div className="absolute top-20 left-0 right-0 h-[3px] bg-brand z-20" />
@@ -499,30 +501,49 @@ export default function App() {
               </motion.div>
             </div>
 
-            {/* ── DESKTOP: tela cheia / banner estilizado com object-cover ── */}
-            <div className="hidden lg:flex relative min-h-[85vh] lg:min-h-[90vh] flex-col justify-end pt-20">
-              {/* Imagem de fundo */}
+            {/* ── DESKTOP: imagem natural 100% largura, zero corte na marquise ── */}
+            <div className="hidden lg:block pt-20 relative">
+              {/* Blur de fundo para preencher espaço */}
               <div className="absolute inset-0 z-0">
                 <img
                   src={heroBg}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-full object-cover scale-110"
+                  style={{ filter: "blur(32px) brightness(0.25) saturate(1.2)" }}
+                  loading="eager"
+                />
+              </div>
+              {/* Imagem principal 100% visível sem corte */}
+              <motion.div
+                className="relative z-10 w-full"
+                initial={{ scale: 1.02, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              >
+                <img
+                  src={heroBg}
                   alt="Own Barber Club"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-auto block"
                   loading="eager"
                   decoding="async"
                 />
-              </div>
-              {/* Gradiente escuro para legibilidade */}
+              </motion.div>
+              {/* Gradiente inferior para fusão com a próxima seção */}
               <div
-                className="absolute inset-0 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%)" }}
+                className="absolute bottom-0 left-0 right-0 h-1/3 z-20 pointer-events-none"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)" }}
               />
-              {/* Linha vermelha */}
+              {/* Linha vermelha abaixo da navbar */}
               <div className="absolute top-20 left-0 right-0 h-[3px] bg-brand z-30" />
-              {/* Texto */}
-              <div className="relative z-30 px-12 lg:px-16 pb-16 w-full lg:w-2/3">
-                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9, delay: 0.4 }}>
-                  <h1 className="text-[7vw] leading-[0.82] mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              {/* Texto na parte inferior esquerda */}
+              <div className="absolute bottom-16 left-0 z-30 px-12 lg:px-16 w-full lg:w-1/2">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.4 }}
+                >
+                  <h1 className="text-[6vw] leading-[0.85] mb-4 drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                     OWN <br />BARBER <br /><span className="text-brand">CLUB.</span>
                   </h1>
                   <div className="flex flex-wrap gap-2">
