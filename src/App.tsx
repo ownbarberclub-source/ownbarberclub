@@ -26,7 +26,6 @@ import efipiEduardo from "./assets/efapi-eduardo.jpg";
 import efipiKaique from "./assets/efapi-kaique.jpg";
 import efipiCadu from "./assets/efapi-cadu.jpg";
 import efipiBruno from "./assets/efapi-bruno.jpg";
-import efipiLucas from "./assets/efapi-lucas.jpg";
 import galeria1 from "./assets/galeria-01.jpg";
 import galeria2 from "./assets/galeria-02.jpeg";
 import galeria3 from "./assets/galeria-03.jpg";
@@ -848,7 +847,7 @@ export default function App() {
                   { name: "Nasser", role: "Gerente de Unidade", img: avenidaNasser },
                   { name: "Hernaldo", role: "Barbeiro", img: avenidaHernaldo },
                   { name: "Vitinho", role: "Barbeiro", img: centroVitinho },
-                  { name: "Bruno", role: "Barbeiro", img: avenidaBruno },
+                  { name: "João", role: "Barbeiro", img: avenidaBruno },
                 ]
               },
               {
@@ -858,7 +857,6 @@ export default function App() {
                   { name: "Kaique", role: "Barbeiro", img: efipiKaique },
                   { name: "Cadu", role: "Barbeiro", img: efipiCadu },
                   { name: "Bruno", role: "Barbeiro", img: efipiBruno },
-                  { name: "Lucas", role: "Barbeiro", img: efipiLucas },
                 ]
               }
             ].map((group, gIdx) => (
